@@ -1,0 +1,23 @@
+
+h1 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+#hovedoverskrift
+{
+  color: #4a90e2;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 75px;
+  letter-spacing: 3px; 
+  font-weight: 1000;
+}
