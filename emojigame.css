@@ -1,26 +1,132 @@
-h1 {
-  font-family: 'Comic Sans MS', cursive;
+:root{
+  --lilac: #C8A2C8;
+  --light-yellow: #FFFACD;
+  --heading-yellow: #FFD700;
+  --pointer-color: #FF4500;
+  --bg-accent: rgba(0,0,0,0.06);
+}
+
+/* EMOJI bakgrunn: flere emojier lag på lag */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #C8A2C8;
+  background-size: 90px, 110px, 80px;
+  background-blend-mode: normal, normal, normal, multiply;
+  min-height: 100vh;
+}
+
+/* felles skjerm-beholder */
+.screen {
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Overskrift */
+.overskrift {
+  color: var(--heading-yellow);
   font-size: 3rem;
-  color: #f4c542;
-  text-shadow: 2px 2px #333;
+  font-weight: 800;
+  margin: .5rem 0 1.5rem 0;
+  text-shadow: 2px 2px rgba(0,0,0,0.25);
 }
 
+/* START-knapp */
+.start-btn {
+  background: var(--lilac);
+  color: white;
+  border: none;
+  padding: 1rem 2.4rem;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.start-btn:hover { transform: translateY(-3px); }
+
+/* Kategori-knapper (gule) */
 .kategori-btn {
-  font-size: 1.3rem;
-  font-weight: bold;
-  border-radius: 15px;
-  padding: 15px 25px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  display: inline-block;
+  background: var(--light-yellow);
+  color: #111;
+  padding: .9rem 1.6rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  min-width: 190px;
+  text-align: center;
+}
+.kategori-btn:hover { background: #FFEFA0; }
+
+/* Tilbake-knapp */
+.tilbake-btn {
+  background: var(--light-yellow);
+  border: none;
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+.tilbake-btn:hover { background: #FFEFA0; }
+
+/* Wheel area */
+#wheelArea { position: relative; width: 340px; }
+
+/* Canvas centering */
+canvas#wheel { border-radius: 8px; box-shadow: 0 10px 24px rgba(0,0,0,0.15); background: rgba(255,255,255,0.75); }
+
+/* Pointer: midt over hjulet, peker ned (viser valgt sektor) */
+#pointer {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 28px solid var(--pointer-color); /* pil peker ned */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
 }
 
-#wheelContainer {
-  width: 300px;
-  height: 300px;
-  position: relative;
-}
-
-#spinBtn {
-  font-weight: bold;
+/* Spin-knapp: ligger i midten av hjulet */
+.spin-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--lilac);
+  color: #fff;
+  border: none;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  padding: 20px 25px;
+  font-weight: 800;
+  cursor: pointer;
+  z-index: 6;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.spin-btn:active { transform: translate(-50%, -50%) scale(0.98); }
+
+/* resultat-tekst */
+#resultat {
+  margin-top: 16px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #222;
+  min-height: 1.4em;
+}
+
+/* layout tweaks */
+.wrap { flex-wrap: wrap; gap: 2rem; align-items: center; }
+
+/* responsivt */
+@media (max-width: 760px) {
+  .wrap { flex-direction: column; }
+  .kategori-btn { min-width: 240px; }
 }

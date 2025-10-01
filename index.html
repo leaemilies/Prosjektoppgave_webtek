@@ -10,41 +10,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body class = "bg-light">
-  <!-- Forside -->
-  <div id="forside" class="d-flex flex-column justify-content-center align-items-center vh-100 text-center">
-    <h1 class="mb-4">The Emoji Game</h1>
-    <button id="startKnapp" class="btn btn-warning btn-lg shadow-lg">START</button>
+<body>
+  <!-- FORSIDE -->
+  <div id="forside" class="screen d-flex flex-column justify-content-center align-items-center">
+    <h1 class="overskrift">THE EMOJI GAME</h1>
+    <button id="startKnapp" class="start-btn">START</button>
   </div>
 
-  <!-- Kategori-skjerm -->
-  <div id="kategoriSkjerm" class="d-none vh-100 d-flex flex-column justify-content-center align-items-center text-center">
-    <h2 class="mb-4">VELG KATEGORI!</h2>
+  <!-- KATEGORI / SPINNER SKJERM -->
+  <div id="kategoriSkjerm" class="screen d-none flex-column justify-content-center align-items-center">
+    <h1 class="overskrift">VELG KATEGORI</h1>
 
-    <div class="d-flex align-items-center justify-content-center w-100">
-      <!-- Venstre kolonne -->
-      <div class="d-flex flex-column gap-3 me-5">
-        <button class="btn btn-warning kategori-btn">Film og bøker</button>
-        <button class="btn btn-warning kategori-btn">Musikk</button>
-        <button class="btn btn-warning kategori-btn">Land</button>
+    <div class="d-flex align-items-center justify-content-center gap-4 wrap">
+      <!-- venstre kolonne -->
+      <div class="d-flex flex-column gap-3">
+        <a href="film.html" class="kategori-btn">Film og bøker</a>
+        <a href="musikk.html" class="kategori-btn">Musikk</a>
+        <a href="land.html" class="kategori-btn">Land</a>
       </div>
 
-      <!-- Spinner -->
-      <div id="wheelContainer" class="position-relative">
-        <canvas id="wheel" width="300" height="300"></canvas>
-        <button id="spinBtn" class="btn btn-dark position-absolute top-50 start-50 translate-middle">
-          Spinn
-        </button>
+      <!-- spinner -->
+      <div id="wheelArea" class="text-center">
+        <div id="pointer"></div>
+        <canvas id="wheel" width="320" height="320"></canvas>
+        <button id="spinBtn" class="spin-btn">SPINN</button>
+        <div id="resultat" aria-live="polite"></div>
       </div>
 
-      <!-- Høyre kolonne -->
-      <div class="d-flex flex-column gap-3 ms-5">
-        <button class="btn btn-warning kategori-btn">Spill</button>
-        <button class="btn btn-warning kategori-btn">Ordtak</button>
-        <button class="btn btn-warning kategori-btn">Mat og drikke</button>
+      <!-- høyre kolonne -->
+      <div class="d-flex flex-column gap-3">
+        <a href="spill.html" class="kategori-btn">Spill</a>
+        <a href="ordtak.html" class="kategori-btn">Ordtak</a>
+        <a href="mat.html" class="kategori-btn">Mat og drikke</a>
       </div>
     </div>
+
+    <!-- alltid synlig tilbake-knapp -->
+    <button id="tilbake" class="tilbake-btn mt-4">⬅ Tilbake til startsiden</button>
   </div>
+
 
 
 <!--Linken til js skal ikke flyttes! Det kan kræsje spillet/siden.--> 
