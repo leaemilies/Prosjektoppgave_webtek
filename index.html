@@ -10,45 +10,62 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
-  <!-- FORSIDE -->
-  <div id="forside" class="screen d-flex flex-column justify-content-center align-items-center">
-    <h1 class="overskrift">THE EMOJI GAME</h1>
-    <button id="startKnapp" class="start-btn">START</button>
+<body class="bg-lilac d-flex flex-column justify-content-center align-items-center vh-100">
+
+  <!-- Forside -->
+  <div id="forside" class="card p-5 shadow-lg text-center">
+    <h1 class="mb-4 text-warning">The Emoji Game</h1>
+    <button id="startKnapp" class="btn btn-warning btn-lg mb-3">Start</button>
   </div>
 
-  <!-- KATEGORI / SPINNER SKJERM -->
-  <div id="kategoriSkjerm" class="screen d-none flex-column justify-content-center align-items-center">
-    <h1 class="overskrift">VELG KATEGORI</h1>
+  <!-- Ekstra knapper nederst til høyre -->
+  <div class="extra-buttons position-fixed bottom-0 end-0 p-3">
+    <button class="btn btn-light mb-2" data-bs-toggle="modal" data-bs-target="#faqModal">FAQ</button>
+    <button class="btn btn-light mb-2" data-bs-toggle="modal" data-bs-target="#utviklerModal">Om utviklerne</button>
+    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reglerModal">Regler</button>
+  </div>
 
-    <div class="d-flex align-items-center justify-content-center gap-4 wrap">
-      <!-- venstre kolonne -->
-      <div class="d-flex flex-column gap-3">
-        <a href="film.html" class="kategori-btn">Film og bøker</a>
-        <a href="musikk.html" class="kategori-btn">Musikk</a>
-        <a href="land.html" class="kategori-btn">Land</a>
-      </div>
+  <!-- Spill-skjerm -->
+  <div id="spill" class="d-none card p-5 shadow-lg text-center">
+    <h2 class="mb-3">Velg kategori</h2>
+    <div class="spinner-container position-relative mx-auto mb-3">
+      <canvas id="spinner" width="300" height="300"></canvas>
+      <div class="arrow"></div>
+    </div>
+    <button id="spinBtn" class="btn btn-warning mb-3">Spinn</button>
+    <div id="kategoriKnapper" class="d-flex flex-column align-items-center gap-2 mb-3"></div>
+    <button id="backBtn" class="btn btn-secondary">Tilbake til startsiden</button>
+  </div>
 
-      <!-- spinner -->
-      <div id="wheelArea" class="text-center">
-        <div id="pointer"></div>
-        <canvas id="wheel" width="320" height="320"></canvas>
-        <button id="spinBtn" class="spin-btn">SPINN</button>
-        <div id="resultat" aria-live="polite"></div>
-      </div>
-
-      <!-- høyre kolonne -->
-      <div class="d-flex flex-column gap-3">
-        <a href="spill.html" class="kategori-btn">Spill</a>
-        <a href="ordtak.html" class="kategori-btn">Ordtak</a>
-        <a href="mat.html" class="kategori-btn">Mat og drikke</a>
+  <!-- FAQ Modal -->
+  <div class="modal fade" id="faqModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h4>FAQ</h4>
+        <p>Her kan du legge inn ofte stilte spørsmål.</p>
       </div>
     </div>
-
-    <!-- alltid synlig tilbake-knapp -->
-    <button id="tilbake" class="tilbake-btn mt-4">⬅ Tilbake til startsiden</button>
   </div>
 
+  <!-- Utvikler Modal -->
+  <div class="modal fade" id="utviklerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h4>Om utviklerne</h4>
+        <p>Her kan du skrive litt om utviklerne av spillet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regler Modal -->
+  <div class="modal fade" id="reglerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h4>Regler</h4>
+        <p>Her kan du forklare reglene til spillet.</p>
+      </div>
+    </div>
+  </div>
 
 
 <!--Linken til js skal ikke flyttes! Det kan kræsje spillet/siden.--> 
