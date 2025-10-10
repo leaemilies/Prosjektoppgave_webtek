@@ -37,7 +37,7 @@
     <button id="backBtn" class="btn btn-secondary">Tilbake til startsiden</button>
   </div>
 
-  <!-- FAQ Modal -->
+   <!-- FAQ Modal -->
   <div class="modal fade" id="faqModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content p-3">
@@ -58,11 +58,115 @@
   </div>
 
   <!-- Regler Modal -->
+  <div class="modal fade" id="FAQModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h4 id="regler">Ofte stilte spørsmål</h4>
+        
+        <div class="accordion" id="reglerAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">   
+              </button>>
+                Kan jeg bruke flere hint på ett ord?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#reglerAccordion">
+              <div class="accordion-body">
+                Ja, men hvert hint koster 1 poeng. 
+                Du kan maksimalt bruke 3 hint per runde.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Hvor mange kategorier finnes det?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#reglerAccordion">
+              <div class="accordion-body">
+                Det er 6 kategorier: 
+                Dyr, Mat, Filmer, Kjente personer, Steder og Sport.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Kan jeg spille alene eller sammen med andre?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
+              <div class="accordion-body">
+                D kan spille alene for å utfordre 
+                deg selv, eller sammen med venner og 
+                familie for en morsommere opplevelse!
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Hva vil det si å spinne hjulet?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#reglerAccordion">
+              <div class="accordion-body">
+                Hjuet er en måte å tilfeldig velge 
+                en kategori på. Når du spinner hjulet, 
+                velger det kategorien for deg
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Kan jeg hoppe over et ord?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#reglerAccordion">
+                <div class="accordion-body">
+                  Ja det kan du, men du får ingen poeng for det ordet.
+                </div>
+                </div>
+              </div>
+
+             <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Hvordan vinner jeg?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
+              <div class="accordion-body">
+                Alene: Du vinner mot deg selv hver gang du slår din egen high-score.
+                Sammen med venner: Du vinner over vennene dine ved å samle flere poeng 
+                enn dem for hver runde.
+              </div>
+            </div>
+          </div>
+
+  </div>
+
+  <!-- Utvikler Modal -->
+  <div class="modal fade" id="utviklerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content p-3">
+        <h4>Om utviklerne</h4>
+        <p>Her kan du skrive litt om utviklerne av spillet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regler Modal -->
   <div class="modal fade" id="reglerModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content p-3">
         <h4>Regler</h4>
         <p>Her kan du forklare reglene til spillet.</p>
+
       </div>
     </div>
   </div>
