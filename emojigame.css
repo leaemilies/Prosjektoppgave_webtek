@@ -48,16 +48,19 @@ h1, h2 {
   box-shadow: var(--shadow);
 }
 
-/* Stor blå tittel som i PDF-en */
-.title{
-  margin: 0;
-  font-weight: 900;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-size: clamp(40px, 8vw, 110px);
-  color: var(--blue);
-  text-align: center;
+/* Stor gul boblete tittel som i PDF-en */
+.title {
+  font-family: 'Luckiest Guy', sans-serif;
+  font-size: clamp(50px, 8vw, 120px);
+  font-weight: 400;
+  color: #FFD54F; /* gul som i Canva */
+  -webkit-text-stroke: 3px white; /* hvit kantlinje */
+  text-stroke: 3px white;
+  text-shadow: 2px 3px 0 #00000040; /* gir litt "pop" */
+  letter-spacing: 2px;
+  text-transform: capitalize;
 }
+
 
 /* Start-knappen */
 .btn-start{
