@@ -106,3 +106,42 @@ body::before {
     transform: translateY(-50%);
   }
 }
+
+
+/* Kategori boksene: */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* automatisk antall kolonner */
+  gap: 25px; /* mellomrom mellom boksene */
+  justify-items: center; /* senterer boksene i cellene */
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* selve knappene JS lager */
+.category-grid .btn {
+  background: #FFD54F; /* gulfarge som i Canva */
+  color: #000; /* tekstfarge */
+  border: 3px solid white; /* hvit kant */
+  border-radius: 40px; /* rund form */
+  font-family: 'Luckiest Guy', sans-serif; /* samme font som tittel */
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 18px 0;
+  width: 100%;
+  max-width: 250px; /* hvor brede boksene blir */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* skygge for “pop” */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* hover-effekt */
+.category-grid .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* trykk-effekt */
+.category-grid .btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
