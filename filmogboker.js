@@ -67,14 +67,4 @@ function sjekksvar() {
   
 }
 
-
-
-
-
-
-
-
-//window.onload = function() {
-//    document.getElementById("sjekk").onclick = sjekksvar;
-//}
 }
