@@ -75,14 +75,24 @@ h1, h2 {
 
 
 /* Emoji-bakgrunn som ruller nedover */
-body::before {
+/* Emoji-bakgrunn som ruller uendelig nedover */
+body {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Vi bruker to lag (::before og ::after) som følger hverandre */
+body::before,
+body::after {
   content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%; /* gjør den høyere enn skjermen for å skape rulleffekt */
-  font-size: 6rem; /* emoji-størrelse */
+  height: 200%;
+  font-size: 6rem;
   line-height: 1.3;
   white-space: pre-wrap;
   text-align: center;
@@ -91,13 +101,17 @@ body::before {
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
   animation: scrollEmojis 30s linear infinite;
-  opacity: 0.15; /* hvor tydelig bakgrunnen er */
-  pointer-events: none; /* så man fortsatt kan trykke på knapper */
-  z-index: -1; /* legger den bak alt annet */
 }
 
-/* selve bevegelsen */
+/* Det andre laget starter halvveis for å skape sømløs overgang */
+body::after {
+  animation-delay: 15s; /* halvparten av 30s */
+}
+
 @keyframes scrollEmojis {
   0% {
     transform: translateY(0);
