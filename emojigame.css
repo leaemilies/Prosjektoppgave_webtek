@@ -1,165 +1,84 @@
 body {
   background-color: #d8b4fe; /* lilac */
-
   background-size: cover;
   background-position: center;
 }
 
-h1, h2 {
-  text-align: center;
-}
+h1, h2 { text-align: center; }
 
-.card {
-  background: white;
-  border-radius: 20px;
-}
+.card { background: white; border-radius: 20px; }
 
 .spinner-container {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: auto;
+  position: relative; width: 300px; height: 300px; margin: auto;
 }
 
+/* Pil øverst som peker ned mot hjulet */
 .arrow {
   position: absolute;
   top: -20px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 0; 
-  height: 0; 
+  transform: translateX(-50%) rotate(180deg);
+  width: 0; height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 30px solid rgb(23, 14, 101); /* peker ned */
+  border-bottom: 30px solid rgb(23, 14, 101);
   z-index: 10;
 }
 
-
 :root{
-  --blue: #4a90e2; /* tittel-farge, lik PDF-følelsen */
+  --blue: #4a90e2;
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-/* Selve forsidekortet */
 .front-card{
   max-width: 720px;
-  border-radius: 20px;      /* matcher resten av stilen din */
+  border-radius: 20px;
   background: #fff;
   box-shadow: var(--shadow);
 }
 
-/* Stor gul boblete tittel som i PDF-en */
-
-.title {
-  font-family: 'Bungee', sans-serif; /* prøv 'Bungee', 'Luckiest Guy', eller 'Fredoka One' */
+.title{
+  font-family: 'Bungee', sans-serif;
   font-size: clamp(50px, 8vw, 120px);
   font-weight: 900;
   text-transform: capitalize;
-  color: #FFD54F; /* gul som i Canva */
-  -webkit-text-stroke: 2px white; /* hvit kontur */
+  color: #FFD54F;
+  -webkit-text-stroke: 2px white;
   text-stroke: 2px white;
-  text-shadow: 2px 2px 0 #00000020; /* litt “pop” */
+  text-shadow: 2px 2px 0 #00000020;
   letter-spacing: 2px;
 }
 
-
-/* Start-knappen */
 .btn-start{
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 14px 28px;
-  box-shadow: var(--shadow);
+  font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
 }
 
-
-/* Emoji-bakgrunn som ruller nedover */
-/* Emoji-bakgrunn som ruller uendelig nedover */
-body {
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-  min-height: 100vh;
+/* Emoji-bakgrunn */
+body::before{
+  content:"😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫";
+  position: fixed; top:0; left:0; width:100%; height:200%;
+  font-size:6rem; line-height:1.3; white-space:pre-wrap; text-align:center;
+  display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap;
+  overflow:hidden; animation:scrollEmojis 30s linear infinite;
+  opacity:.15; pointer-events:none; z-index:-1;
 }
+@keyframes scrollEmojis{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
 
-/* Vi bruker to lag (::before og ::after) som følger hverandre */
-body::before,
-body::after {
-  content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  font-size: 6rem;
-  line-height: 1.3;
-  white-space: pre-wrap;
-  text-align: center;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow: hidden;
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: -1;
-  animation: scrollEmojis 30s linear infinite;
+/* Kategoriknapper */
+.category-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:25px; justify-items:center; margin-top:20px; margin-bottom:40px;
 }
-
-/* Det andre laget starter halvveis for å skape sømløs overgang */
-body::after {
-  animation-delay: 15s; /* halvparten av 30s */
+.category-grid .btn{
+  background:#FFD54F; color:#000; border:3px solid #fff; border-radius:40px;
+  font-family:'Luckiest Guy',sans-serif; font-size:1.3rem; font-weight:600;
+  padding:18px 0; width:100%; max-width:250px;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  transition:transform .15s ease, box-shadow .15s ease;
 }
+.category-grid .btn:hover{ transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,.15); }
+.category-grid .btn:active{ transform:translateY(1px); box-shadow:0 4px 10px rgba(0,0,0,.1); }
 
-@keyframes scrollEmojis {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-
-/* Kategori boksene: */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* automatisk antall kolonner */
-  gap: 25px; /* mellomrom mellom boksene */
-  justify-items: center; /* senterer boksene i cellene */
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-
-/* selve knappene JS lager */
-.category-grid .btn {
-  background: #FFD54F; /* gulfarge som i Canva */
-  color: #000; /* tekstfarge */
-  border: 3px solid white; /* hvit kant */
-  border-radius: 40px; /* rund form */
-  font-family: 'Luckiest Guy', sans-serif; /* samme font som tittel */
-  font-size: 1.3rem;
-  font-weight: 600;
-  padding: 18px 0;
-  width: 100%;
-  max-width: 250px; /* hvor brede boksene blir */
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* skygge for “pop” */
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-/* hover-effekt */
-.category-grid .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-/* trykk-effekt */
-.category-grid .btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-
-.category-grid .w-50{ width: 100% !important; max-width: 240px; }
-#kategoriKnapper{ display: grid !important; grid-template-columns: repeat(3, minmax(180px,1fr)); gap: 18px 22px; justify-items: center; }
+.category-grid .w-50{ width:100% !important; max-width:240px; }
+#kategoriKnapper{ display:grid !important; grid-template-columns:repeat(3,minmax(180px,1fr)); gap:18px 22px; justify-items:center; }

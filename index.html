@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<meta charset="UTF-8">
-    <title>The Emoji Game!</title>
-    <link rel = "stylesheet" href="emojigame.css" />
-    <!-- Dette er den siste fonten jeg vil bruke i tittel: -->
-    <link rel="stylesheet" href="emojigame.css">
-    <!-- Dette er fonten brukt i tittel:-->
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <!-- En annen option til tittelfont: -->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <!-- Dette er Bootstrap: Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Dette er også Bootstrap: Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <title>The Emoji Game!</title>
+  <link rel="stylesheet" href="emojigame.css">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body class="bg-lilac d-flex flex-column justify-content-center align-items-center vh-100">
 
   <!-- Forside -->
-<div id="forside" class="card front-card p-5 shadow-lg text-center">
-  <h1 class="title mb-4">THE EMOJI GAME</h1>
-  <button id="startKnapp" class="btn btn-warning btn-lg btn-start mb-3">START</button>
-</div>
-
+  <div id="forside" class="card front-card p-5 shadow-lg text-center">
+    <h1 class="title mb-4">THE EMOJI GAME</h1>
+    <button id="startKnapp" class="btn btn-warning btn-lg btn-start mb-3">START</button>
+  </div>
 
   <!-- Ekstra knapper nederst til høyre -->
   <div class="extra-buttons position-fixed bottom-0 end-0 p-3">
@@ -40,11 +33,21 @@
       <div class="arrow"></div>
     </div>
     <button id="spinBtn" class="btn btn-warning mb-3">Spinn</button>
-    <div id="kategoriKnapper" class="category-grid mb-3"></div>
+
+    <!-- Kategoriknapper -->
+    <div id="kategoriKnapper" class="category-grid mb-3">
+      <a href="matogdrikke.html" class="btn btn-warning w-50">Mat og drikke</a>
+      <a href="filmogboker.html" class="btn btn-warning w-50">Film og bøker</a>
+      <a href="musikk.html" class="btn btn-warning w-50">Musikk</a>
+      <a href="land.html" class="btn btn-warning w-50">Land</a>
+      <a href="ordtak.html" class="btn btn-warning w-50">Ordtak</a>
+      <a href="mixed.html" class="btn btn-warning w-50">Mixed</a>
+    </div>
+
     <button id="backBtn" class="btn btn-secondary">Tilbake til startsiden</button>
   </div>
 
-   <!-- FAQ Modal -->
+  <!-- FAQ Modal -->
   <div class="modal fade" id="faqModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content p-3">
@@ -52,117 +55,6 @@
         <p>Her kan du legge inn ofte stilte spørsmål.</p>
       </div>
     </div>
-    
-  <div class="modal fade" id="FAQModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content p-3">
-        <h4 id="regler">Ofte stilte spørsmål</h4>
-        
-        <div class="accordion" id="reglerAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">   
-              </button>>
-                Hvordan spiller jeg?
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Du skal gjette ord basert på gitte emojis som representerer ordet. 
-                Du kan be om hint hvis du står fast, men hvert hint koster 1 poeng.
-                Du kan maksimalt bruke 3 hint per runde. 
-                Du vinner ved å samle flest poeng.
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="accordion" id="reglerAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">   
-              </button>>
-                Kan jeg bruke flere hint på ett ord?
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Ja, men hvert hint koster 1 poeng. 
-                Du kan maksimalt bruke 3 hint per runde.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Hvor mange kategorier finnes det?
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Det er 6 kategorier: 
-                Dyr, Mat, Filmer, Kjente personer, Steder og Sport.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Kan jeg spille alene eller sammen med andre?
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                D kan spille alene for å utfordre 
-                deg selv, eller sammen med venner og 
-                familie for en morsommere opplevelse!
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFour">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Hva vil det si å spinne hjulet?
-              </button>
-            </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Hjuet er en måte å tilfeldig velge 
-                en kategori på. Når du spinner hjulet, 
-                velger det kategorien for deg
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFive">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  Kan jeg hoppe over et ord?
-                </button>
-              </h2>
-              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#reglerAccordion">
-                <div class="accordion-body">
-                  Ja det kan du, men du får ingen poeng for det ordet.
-                </div>
-                </div>
-              </div>
-
-             <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Hvordan vinner jeg?
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Alene: Du vinner mot deg selv hver gang du slår din egen high-score.
-                Sammen med venner: Du vinner over vennene dine ved å samle flere poeng 
-                enn dem for hver runde.
-              </div>
-            </div>
-          </div>
-
   </div>
 
   <!-- Utvikler Modal -->
@@ -179,77 +71,55 @@
   <div class="modal fade" id="reglerModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content p-3">
-        <h4>Spilleregler</h4>   
-      </div>
-      <div class="modal-body">
-        <div class="accordion" id="reglerAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Mål med spillet 
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                Du skal gjette ord basert på gitte emojis som representerer ordet. 
-                Du får poeng basert på ord du gjetter og hvor mange hint du bruker for å gjette riktig ord.
-                Du kan maksimalt bruke 3 hint per runde. 
-                Du vinner ved å samle flest poeng.
+        <h4>Spilleregler</h4>
+        <div class="modal-body">
+          <div class="accordion" id="reglerAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Mål med spillet
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#reglerAccordion">
+                <div class="accordion-body">
+                  Gjett ord basert på emojis. Hint er lov, men koster poeng. Samle flest poeng.
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#reglerAccordion">
-        <div class="accordion-body">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Slik spiller du:
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                1. Trykk på "Start"-knappen for å begynne spillet.<br>
-                2. Velg en kategori ved å spinne hjulet eller velge manuelt.<br>
-                3. Se på emojiene og prøv å gjette ordet.<br>
-                4. Trenger du hjelp?
-                   Du kan be om hint, men hvert hint koster 1 poeng.<br>
-                5. GRATULERER! Du har gjettet riktig ord og tjent poeng!<br>
-                6. Du kan velge å spille igjen eller avslutte spillet.<br>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Slik spiller du
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#reglerAccordion">
+                <div class="accordion-body">
+                  Start → Velg kategori eller spinn → Gjett ordet → Bruk hint ved behov → Spill igjen.
+                </div>
               </div>
             </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Poengsystem
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
+                <div class="accordion-body">
+                  4 poeng uten hint · 3 poeng med 1 hint · 2 poeng med 2 hint · 1 poeng med 3 hint · 0 ved feil/hopp.
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
-        <div class="accordion-body">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Poengsystem:
-              </button>
-            </h2>
-            <div id="collapsePoints" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#reglerAccordion">
-              <div class="accordion-body">
-                responsiveTabellPoengsystem<br>
-                - Riktig gjetning uten hint: 4 poeng<br>
-                - Riktig gjetning med 1 hint: 3 poeng<br>
-                - Riktig gjetning med 2 hint: 2 poeng<br>
-                - Riktig gjetning med 3 hint: 1 poeng<br>
-                - Feil gjetning eller hopp over ord: 0 poeng<br>
-              </div> 
-            </div>
-          </div>
-        </div>
-
-
-<!--Linken til js skal ikke flyttes! Det kan kræsje spillet/siden.--> 
-<script src="emojigame.js"></script>
+  <!--Linken til js skal ikke flyttes! Det kan kræsje spillet/siden.-->
+  <script src="emojigame.js"></script>
+</body>
 </html>
-<!--test.--> 
-
-
-
