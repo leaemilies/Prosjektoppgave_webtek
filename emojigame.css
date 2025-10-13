@@ -76,27 +76,33 @@ h1, h2 {
 
 /* Emoji-bakgrunn som ruller nedover */
 body::before {
-  content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀";
+  content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%;
-  font-size: 3rem; /* juster størrelse på emoji */
-  line-height: 1.5;
+  height: 200%; /* gjør den høyere enn skjermen for å skape rulleffekt */
+  font-size: 3rem; /* emoji-størrelse */
+  line-height: 1.3;
   white-space: pre-wrap;
   text-align: center;
-  animation: scrollEmojis 20s linear infinite;
-  opacity: 0.2; /* gjennomsiktighet, så det ikke forstyrrer innholdet */
-  pointer-events: none; /* så du kan klikke på knapper */
-  z-index: -1; /* legger bak alt innhold */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  animation: scrollEmojis 30s linear infinite;
+  opacity: 0.15; /* hvor tydelig bakgrunnen er */
+  pointer-events: none; /* så man fortsatt kan trykke på knapper */
+  z-index: -1; /* legger den bak alt annet */
 }
 
+/* selve bevegelsen */
 @keyframes scrollEmojis {
-  from {
-    transform: translateY(-50%);
+  0% {
+    transform: translateY(0);
   }
-  to {
-    transform: translateY(0%);
+  100% {
+    transform: translateY(-50%);
   }
 }
