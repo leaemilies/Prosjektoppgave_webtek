@@ -72,3 +72,31 @@ h1, h2 {
   padding: 14px 28px;
   box-shadow: var(--shadow);
 }
+
+
+/* Emoji-bakgrunn som ruller nedover */
+body::before {
+  content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  font-size: 3rem; /* juster størrelse på emoji */
+  line-height: 1.5;
+  white-space: pre-wrap;
+  text-align: center;
+  animation: scrollEmojis 20s linear infinite;
+  opacity: 0.2; /* gjennomsiktighet, så det ikke forstyrrer innholdet */
+  pointer-events: none; /* så du kan klikke på knapper */
+  z-index: -1; /* legger bak alt innhold */
+}
+
+@keyframes scrollEmojis {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
