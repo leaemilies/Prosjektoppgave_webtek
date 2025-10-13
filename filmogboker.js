@@ -1,31 +1,7 @@
-let forsok = 5;
-let riktigSvar="harry";
-let lengdeElement = document.getElementById("lengde");
-    lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
-function sjekksvar() {
+window.onload = function() {
 
-    const brukerSvar = document.getElementById("svarfelt").value;
-    const resultat = document.getElementById("resultat");
 
-    if (brukerSvar === riktigSvar.toLowerCase()) {
-        result.textContent = "Riktig svar!";
-        result.style.color = "green";
-        document.getElementById("sjekk").disabled = true;
-    } else {
-        forsok--;
-        result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
-        result.style.color = "red";
-        document.getElementById("svarfelt").value = "";
-
-        if (forsok === 0) {
-            result.textContent = "Du har brukt opp alle forsøkene.";
-            document.getElementById("sjekk").disabled = true;
-        }
-    }
-  
-}
-
-let filmer = [
+    let filmer = [
   "Løvenes konge, The Lion King",
   "Interstellar",
   "Oppdrag Nemo, Finding Nemo",
@@ -61,9 +37,44 @@ let filmEmojis = [
   "&#x1F480;&#x1F3A9;&#x1F383;&#x1F56F;&#xFE0F;&#x1F384;" // The Nightmare Before Christmas
 ];
 
+let rondomiser=Math.floor(Math.random() * filmer.length);
+document.getElementById("sporsmal").innerHTML = filmEmojis[rondomiser];
+
+let forsok = 5;
+let riktigSvar=filmer[rondomiser].toLowerCase();
+let lengdeElement = document.getElementById("lengde");
+    lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
+function sjekksvar() {
+
+    const brukerSvar = document.getElementById("svarfelt").value;
+    const resultat = document.getElementById("resultat");
+
+    if (brukerSvar === riktigSvar.toLowerCase()) {
+        result.textContent = "Riktig svar!";
+        result.style.color = "green";
+        document.getElementById("sjekk").disabled = true;
+    } else {
+        forsok--;
+        result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
+        result.style.color = "red";
+        document.getElementById("svarfelt").value = "";
+
+        if (forsok === 0) {
+            result.textContent = "Du har brukt opp alle forsøkene.";
+            document.getElementById("sjekk").disabled = true;
+        }
+    }
+  
+}
 
 
 
-window.onload = function() {
-    document.getElementById("sjekk").onclick = sjekksvar;
+
+
+
+
+
+//window.onload = function() {
+//    document.getElementById("sjekk").onclick = sjekksvar;
+//}
 }
