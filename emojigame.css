@@ -82,7 +82,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 200%; /* gjør den høyere enn skjermen for å skape rulleffekt */
-  font-size: 3rem; /* emoji-størrelse */
+  font-size: 6rem; /* emoji-størrelse */
   line-height: 1.3;
   white-space: pre-wrap;
   text-align: center;
