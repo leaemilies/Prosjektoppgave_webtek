@@ -1,5 +1,5 @@
 window.onload = function() {
-
+document.getElementById("sjekk").onclick = sjekksvar;
 
     let filmer = [
   "Løvenes konge, The Lion King",
