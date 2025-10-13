@@ -3,7 +3,7 @@
 let forsok = 5;
 let riktigSvar="Oslo";
 let lengdeElement = document.getElementById("lengde");
-    lengdeElement.textContent = "*".repeat(riktigSvar.length);
+    lengdeElement.textContent = "_".repeat(riktigSvar.length);
 
 function sjekksvar() {
 
