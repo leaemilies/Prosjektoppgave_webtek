@@ -145,3 +145,7 @@ body::before {
   transform: translateY(1px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+
+.category-grid .w-50{ width: 100% !important; max-width: 240px; }
+#kategoriKnapper{ display: grid !important; grid-template-columns: repeat(3, minmax(180px,1fr)); gap: 18px 22px; justify-items: center; }
