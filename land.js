@@ -99,6 +99,13 @@ function nyttsporsmal() {
     // Oppdater rundeindikatoren
     runder++;
     document.getElementById("runder").textContent = "Du er på runde " + runder;
+
+    //avslutt på 10 runder
+    if (runder > 10) {
+        document.getElementById("neste").disabled = true;
+        document.getElementById("sjekk").disabled = true;
+        result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
+    }
 }
 
 
