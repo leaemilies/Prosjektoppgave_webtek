@@ -1,4 +1,7 @@
 window.onload = function() {
+
+    let poengsum=0;
+    let runder=1;
 document.getElementById("sjekk").onclick = sjekksvar;
 
     let land = [
@@ -58,6 +61,12 @@ function sjekksvar() {
         result.textContent = "Riktig svar!";
         result.style.color = "green";
         document.getElementById("sjekk").disabled = true;
+        
+        //poengteller
+        let poengdennerunden = forsok;
+        poengsum += poengdennerunden;
+        document.getElementById("poeng").textContent = "Poengsum: " + poengsum;
+
     } else {
         forsok--;
         result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
@@ -71,5 +80,30 @@ function sjekksvar() {
     }
   
 }
+
+function nyttsporsmal() {
+    // Velg et nytt tilfeldig land
+    randomiser = Math.floor(Math.random() * land.length);
+    document.getElementById("sporsmal").innerHTML = landEmojis[randomiser];
+    
+    // Oppdater riktig svar og tilbakestill forsøk og inputfelt
+    riktigSvar = land[randomiser].toLowerCase();
+    forsok = 5;
+    result.textContent = "";
+    document.getElementById("svarfelt").value = "";
+    document.getElementById("sjekk").disabled = false;
+
+    // Oppdater lengdeindikatoren
+    lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
+
+    // Oppdater rundeindikatoren
+    runder++;
+    document.getElementById("runder").textContent = "Du er på runde " + runder;
+}
+
+
+
+document.getElementById("neste").onclick = nyttsporsmal;
+
 
 }
