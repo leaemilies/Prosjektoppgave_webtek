@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konfetti-demo 🎉</title>
+
+  <!-- Konfettibibliotek -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background: #fefefe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Trykk for å feire 🎉</h1>
+  <button id="confettiButton">Riktig svar!</button>
+
+  <script>
+    const button = document.getElementById("confettiButton");
+
+    button.addEventListener("click", () => {
+      // Avfyr konfetti
+      confetti({
+        particleCount: 200,
+        spread: 90,
+        startVelocity: 40,
+        gravity: 0.8,
+        origin: { y: 0.6 },
+        colors: ["#ffb6c1", "#ffd700", "#87cefa", "#98fb98"],
+      });
+
+      // Gi knappen litt sprett-animasjon
+      button.style.transform = "scale(1.2)";
+      setTimeout(() => (button.style.transform = "scale(1)"), 200);
+    });
+  </script>
+</body>
+</html>
