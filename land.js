@@ -50,8 +50,13 @@ document.getElementById("sporsmal").innerHTML = landEmojis[rondomiser];
 
 let forsok = 5;
 let riktigSvar=land[rondomiser].toLowerCase();
+//let riktigSvar=land[5]
 let lengdeElement = document.getElementById("lengde");
     lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
+    //if (lengdeElement.textContent.includes("-")) {
+        lengdeElement.textContent = lengdeElement.textContent.replace(/-/g, "- ");
+    //} skal bytte ut bindestrek med bindestrek og mellomrom
+    
 function sjekksvar() {
 
     const brukerSvar = document.getElementById("svarfelt").value;
