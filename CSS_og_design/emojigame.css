@@ -64,13 +64,12 @@ h1, h2 { text-align: center; }
   border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
 }
 
-/* Emoji-bakgrunn */
 body {
   overflow: hidden;
   position: relative;
 }
 
-/* Første rad */
+/* Emoji-bakgrunn */
 body::before,
 body::after {
   content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫";
@@ -78,7 +77,7 @@ body::after {
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%;
+  height: 100%; /* Endret fra 200% til 100% */
   font-size: 6rem;
   line-height: 1.3;
   white-space: pre-wrap;
@@ -93,11 +92,13 @@ body::after {
   animation: scrollEmojis 30s linear infinite;
 }
 
-/* Den andre starter rett etter den første */
+/* Den andre starter nederst */
 body::after {
-  animation-delay: -15s; /* Halvparten av animasjonstiden */
+  top: 100%;
+  animation-delay: 0s;
 }
 
+/* Animasjon — flytter hver rad opp 100% */
 @keyframes scrollEmojis {
   from {
     transform: translateY(0);
