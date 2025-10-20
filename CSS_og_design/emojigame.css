@@ -89,7 +89,7 @@ body::after {
   opacity: 0.15;
   pointer-events: none;
   z-index: -1;
-  animation: scrollEmojis 15s linear infinite;
+  animation: scrollEmojis 60s linear infinite;
 }
 
 /* Den andre starter nederst */
