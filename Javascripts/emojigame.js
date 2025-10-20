@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Kategorier + filnavn (inkl. Mixed)
   const categories = ["Mat og drikke","Film og bøker","Musikk","Land","Ordtak","Mixed"];
   const ROUTES = {
-    "Mat og drikke": "HTML/Kategoier/matogdrikke.html",
-    "Film og bøker": "HTML/Kategoier/filmogboker.html",
-    "Musikk": "HTML/Kategoier/musikk.html",
-    "Land": "HTML/Kategoier/land.html",
-    "Ordtak": "HTML/Kategoier/ordtak.html",
-    "Mixed": "HTML/Kategoier/mixed.html"
+    "Mat og drikke": "HTML/Kategorier/matogdrikke.html",
+    "Film og bøker": "HTML/Kategorier/filmogboker.html",
+    "Musikk": "HTML/Kategorier/musikk.html",
+    "Land": "HTML/Kategorier/land.html",
+    "Ordtak": "HTML/Kategorier/ordtak.html",
+    "Mixed": "HTML/Kategorier/mix.html"
   };
   const n = categories.length;
 
