@@ -22,12 +22,6 @@
 /* Design på tittel */
 .title{
   color:#FFD54F;
-  -webkit-text-stroke: 3px #fff;  /* Chrome/Edge/Safari */
-  text-shadow:                     /* Fallback for Firefox */
-    0  3px 0 #fff,  0 -3px 0 #fff,
-    3px 0  0 #fff, -3px  0 0 #fff,
-    2px 2px 0 #fff, -2px 2px 0 #fff,
-    2px -2px 0 #fff, -2px -2px 0 #fff;
 }
 
 body {
