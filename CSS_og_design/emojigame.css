@@ -50,24 +50,6 @@ h1, h2 { text-align: center; }
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-/* Slå av Bootstrap-stilen for forsiden */
-#forside.card {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;  
-  padding: 0;                    
-}
-
-/* Sky-kortet på forsiden */
-#forside.front-card{
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 70px 80px 90px; /* justér etter smak */
-  background: transparent; /* ingen hvit base her */
-}
-
 .btn-start{
   font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
