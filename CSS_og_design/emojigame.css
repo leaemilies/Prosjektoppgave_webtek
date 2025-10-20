@@ -51,6 +51,20 @@ h1, h2 { text-align: center; }
 }
 
 .front-card{
+  position: relative;
+  max-width: 900px;            /* størrelse i forhold til tekst */
+  padding: 60px 80px;          /* luft i kortet */
+  background: #fff;
+  /* blob-effekt (prosentverdier pr hjørne / pr akse) */
+  border-radius: 36% 64% 61% 39% / 53% 39% 61% 47%;
+  /* myk, litt dypere skygge + subtil innvendig glans */
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.15),
+    0 2px 0 rgba(255,255,255,.6) inset;
+  overflow: hidden;            /* klipp highlights som går utenfor */
+}
+
+.front-card{
   max-width: 720px;
   border-radius: 20px;
   background: #fff;
