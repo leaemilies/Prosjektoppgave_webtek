@@ -2,6 +2,8 @@ window.onload = function() {
 
     let poengsum=0;
     let runder=1;
+    
+
 document.getElementById("sjekk").onclick = sjekksvar;
 
     let land = [
@@ -115,8 +117,11 @@ function nyttsporsmal() {
         document.getElementById("neste").disabled = true;
         document.getElementById("sjekk").disabled = true;
         result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
+        localStorage.setItem("score", poengsum);
+        window.location.href = "../../HTML/resultat.html";
     }
 }
+
 
 
 //neste spm
@@ -126,4 +131,6 @@ document.getElementById("tilbake").onclick = function() {
     window.location.href = "../../index.html";
 
 }
+score.textContent = poengsum;
+    localStorage.setItem("score", poengsum);
 }
