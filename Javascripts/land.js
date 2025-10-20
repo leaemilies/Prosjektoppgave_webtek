@@ -91,6 +91,15 @@ function sjekksvar() {
     
   
 }
+// hit enter i steden for knapp
+const input = document.getElementById("svarfelt"); 
+
+input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); 
+        document.getElementById("sjekk").click();
+    }
+});
 
 function nyttsporsmal() {
     // Velg et nytt tilfeldig land
