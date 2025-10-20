@@ -50,19 +50,43 @@ h1, h2 { text-align: center; }
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-.front-card{
+/* Slå av Bootstrap-stilen for forsiden */
+#forside.card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;  
+  padding: 0;                    
+}
+
+/* Blob-kortet på forsiden */
+#forside.front-card{
   position: relative;
-  max-width: 900px;            /* størrelse i forhold til tekst */
-  padding: 60px 80px;          /* luft i kortet */
-  background: #fff;
-  /* blob-effekt (prosentverdier pr hjørne / pr akse) */
-  border-radius: 36% 64% 61% 39% / 53% 39% 61% 47%;
-  /* myk, litt dypere skygge + subtil innvendig glans */
+  max-width: 900px;           /* gjør boksen større/mindre her */
+  margin: 0 auto;             /* sentrer */
+  padding: 60px 80px;         /* ta bort hvis du heller vil bruke p-5 */
+  background: #fff !important;
+  border: 0;
+  /* organisk blob-radius (prosent pr hjørne / pr akse) */
+  border-radius: 36% 64% 61% 39% / 53% 39% 61% 47% !important;
+  /* dypere skygge + subtil innvendig glans */
   box-shadow:
     0 25px 60px rgba(0,0,0,.15),
     0 2px 0 rgba(255,255,255,.6) inset;
-  overflow: hidden;            /* klipp highlights som går utenfor */
+  overflow: hidden;
 }
+
+/* Glossy highlight og bunnskygge inni bloben */
+#forside.front-card::before{
+  content:"";
+  position:absolute; inset:-2px;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 50% at 90% 110%, rgba(0,0,0,.06), rgba(0,0,0,0) 60%);
+  pointer-events:none;
+}
+
 
 .btn-start{
   font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
