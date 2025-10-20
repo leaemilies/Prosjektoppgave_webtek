@@ -91,15 +91,26 @@ function sjekksvar() {
     
   
 }
-// hit enter i steden for knapp
-const input = document.getElementById("svarfelt"); 
+const input = document.getElementById("svarfelt"); // bytt til riktig ID på tekstfeltet ditt
+const sjekkKnapp = document.getElementById("sjekk");
+const nesteKnapp = document.getElementById("neste");
 
+// Lytt etter Enter-tasten
 input.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        event.preventDefault(); 
-        document.getElementById("sjekk").click();
+        event.preventDefault(); // hindrer evt. form-submit
+
+        // Hvis "sjekk"-knappen er aktiv → sjekk svar
+        if (!sjekkKnapp.disabled) {
+            sjekkKnapp.click();
+        }
+        // Hvis "sjekk"-knappen er deaktivert, men "neste" er aktiv → gå videre
+        else if (!nesteKnapp.disabled) {
+            nesteKnapp.click();
+        }
     }
 });
+
 
 function nyttsporsmal() {
     // Velg et nytt tilfeldig land
