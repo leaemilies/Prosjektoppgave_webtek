@@ -64,14 +64,6 @@ h1, h2 { text-align: center; }
   overflow: hidden;            /* klipp highlights som går utenfor */
 }
 
-.front-card{
-  max-width: 720px;
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-
 .btn-start{
   font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
