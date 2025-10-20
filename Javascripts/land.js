@@ -62,7 +62,7 @@ function sjekksvar() {
     const brukerSvar = document.getElementById("svarfelt").value;
     const resultat = document.getElementById("resultat");
 
-    if (brukerSvar === riktigSvar.toLowerCase()) {
+    if (brukerSvar === riktigSvar.toLowerCase()) { // riktig svar
         result.textContent = "Riktig svar!";
         result.style.color = "green";
         document.getElementById("sjekk").disabled = true;
@@ -72,7 +72,7 @@ function sjekksvar() {
         poengsum += poengdennerunden;
         document.getElementById("poeng").textContent = "Poengsum: " + poengsum;
 
-    } else {
+    } else { // feil svar
         forsok--;
         result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
         result.style.color = "red";
@@ -82,6 +82,9 @@ function sjekksvar() {
             result.textContent = "Du har brukt opp alle forsøkene.";
             document.getElementById("sjekk").disabled = true;
         }
+    }
+    if (forsok <= 2) {
+        document.getElementById("hint").textContent = "Hint: Første bokstav er '" + riktigSvar.charAt(0).toUpperCase() + "'";
     }
   
 }
@@ -97,6 +100,7 @@ function nyttsporsmal() {
     result.textContent = "";
     document.getElementById("svarfelt").value = "";
     document.getElementById("sjekk").disabled = false;
+    document.getElementById("hint").textContent = "";
 
     // Oppdater lengdeindikatoren
     lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
@@ -114,8 +118,11 @@ function nyttsporsmal() {
 }
 
 
-
+//neste spm
 document.getElementById("neste").onclick = nyttsporsmal;
 
+document.getElementById("tilbake").onclick = function() {
+    window.location.href = "spill.html";
 
+}
 }
