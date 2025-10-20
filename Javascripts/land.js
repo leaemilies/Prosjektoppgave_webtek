@@ -83,9 +83,10 @@ function sjekksvar() {
             document.getElementById("sjekk").disabled = true;
         }
     }
-    if (forsok <= 2) {
+    if (forsok <= 3) {
         document.getElementById("hint").textContent = "Hint: Første bokstav er '" + riktigSvar.charAt(0).toUpperCase() + "'";
     }
+    
   
 }
 
