@@ -11,6 +11,11 @@
 .title{
   font-family: "Super Kindly", system-ui, Arial, sans-serif;
   color:#FFD54F;
+  font-size: clamp(3rem, 8vw, 8rem); /* dynamisk skalering i forhold til skjermbredde */
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  line-height: .9;
+  text-align: center;
 }
 
 body {
