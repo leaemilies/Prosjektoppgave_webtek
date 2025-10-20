@@ -18,6 +18,15 @@
   text-align: center;
 }
 
+/* Design på kategori font */
+#spill h2 {
+  font-family: "Super Kindly", sans-serif;
+  color: #FFD54F;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+
 body {
   background-color: #d8b4fe; /* lilac */
   background-size: cover;
