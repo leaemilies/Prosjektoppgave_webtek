@@ -25,14 +25,50 @@
     <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reglerModal">Regler</button>
   </div>
 
-  <!-- Spill-skjerm -->
-  <div id="spill" class="d-none card p-5 shadow-lg text-center">
-    <h2 class="mb-3">Velg kategori</h2>
-    <div class="spinner-container position-relative mx-auto mb-3">
-      <canvas id="spinner" width="300" height="300"></canvas>
-      <div class="arrow"></div>
+<!-- Spill-skjerm -->
+<div id="spill" class="d-none card p-5 shadow-lg text-center">
+  <h2 class="mb-3">Velg kategori</h2>
+
+  <div class="category-layout">
+    <!-- VENSTRE: knapper -->
+    <div class="side">
+      <a href="HTML/Kategorier/filmogboker.html" class="btn btn-warning cat">Film og bøker</a>
+      <a href="HTML/Kategorier/musikk.html" class="btn btn-warning cat">Musikk</a>
+      <a href="HTML/Kategorier/land.html" class="btn btn-warning cat">Land</a>
     </div>
-    <button id="spinBtn" class="btn btn-warning mb-3">Spinn</button>
+
+    <!-- MIDTEN: hjul + pil -->
+    <div class="wheel-area">
+      <!-- fast peker på kanten (står stille) -->
+      <div class="fixed-pointer" aria-hidden="true"></div>
+
+      <!-- alt som spinner sammen (hjul + arm + hub) -->
+      <div class="rotor" id="rotor">
+        <canvas id="spinner" width="420" height="420"></canvas>
+
+        <!-- midtarmer/pil som spinner med hjulet -->
+        <div class="spin-arm" aria-hidden="true"><span class="knob"></span></div>
+
+        <!-- pynt/hub i midten -->
+        <div class="hub" aria-hidden="true"></div>
+      </div>
+
+      <button id="spinBtn" class="btn btn-warning btn-start mt-3">
+        Spinn for tilfeldig kategori
+      </button>
+    </div>
+
+    <!-- HØYRE: knapper -->
+    <div class="side">
+      <a href="HTML/Kategorier/mixed.html" class="btn btn-warning cat">Mixed</a>
+      <a href="HTML/Kategorier/ordtak.html" class="btn btn-warning cat">Ordtak</a>
+      <a href="HTML/Kategorier/matogdrikke.html" class="btn btn-warning cat">Mat og drikke</a>
+    </div>
+  </div>
+
+  <button id="backBtn" class="btn btn-secondary mt-4">Tilbake til startsiden</button>
+</div>
+
 
     <!-- Kategoriknapper -->
     <div id="kategoriKnapper" class="category-grid mb-3">
