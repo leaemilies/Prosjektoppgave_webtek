@@ -61,30 +61,32 @@ h1, h2 { text-align: center; }
 
 /* Sky-kortet på forsiden */
 #forside.front-card{
-  --cloud: #fff;
-  --shadow: rgba(0,0,0,.18);
-
   position: relative;
-  max-width: 1000px;          /* bredden på skyen */
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 70px 80px 90px;    /* ekstra bunn-padding så knappen ikke kræsjer i kanten */
-
-  /* selve “skyen”: flere sirkler + en hvit base (siste linje) */
-  background:
-    radial-gradient(180px 120px at 18% 18%, var(--cloud) 99%, transparent 100%),
-    radial-gradient(220px 140px at 42% 10%, var(--cloud) 99%, transparent 100%),
-    radial-gradient(200px 130px at 66% 14%, var(--cloud) 99%, transparent 100%),
-    radial-gradient(180px 120px at 82% 28%, var(--cloud) 99%, transparent 100%),
-    radial-gradient(230px 140px at 15% 85%, var(--cloud) 99%, transparent 100%),
-    radial-gradient(240px 150px at 85% 85%, var(--cloud) 99%, transparent 100%),
-    linear-gradient(var(--cloud), var(--cloud)); /* baseflate */
-
-  /* myk skygge under hele skyen */
-  filter: drop-shadow(0 30px 70px var(--shadow));
-  border: 0;
-  border-radius: 40px;        /* avrunder baseflaten litt (usynlig bak sirklene, men gir jevn kant) */
-  overflow: visible;
+  padding: 70px 80px 90px; /* justér etter smak */
+  background: transparent; /* ingen hvit base her */
 }
+
+/* Selve skyen – tegnes på et pseudo-element bak innholdet */
+#forside.front-card::before{
+  content:"";
+  position:absolute;
+  inset: 0;                 /* fyll hele boksen */
+  pointer-events: none;     /* la knappen være klikkbar */
+  /* flere overlappende sirkler + en stor midtsirkel */
+  background:
+    radial-gradient(58% 48% at 50% 58%, #fff 99%, transparent 100%),
+    radial-gradient(28% 22% at 18% 35%, #fff 99%, transparent 100%),
+    radial-gradient(30% 23% at 38% 22%, #fff 99%, transparent 100%),
+    radial-gradient(30% 23% at 62% 18%, #fff 99%, transparent 100%),
+    radial-gradient(26% 22% at 82% 38%, #fff 99%, transparent 100%),
+    radial-gradient(26% 22% at 22% 86%, #fff 99%, transparent 100%),
+    radial-gradient(26% 22% at 78% 86%, #fff 99%, transparent 100%);
+  /* ekte sky-skygge langs formen (bruker alpha fra gradientene) */
+  filter: drop-shadow(0 30px 70px rgba(0,0,0,.18));
+}
+
 
 
 .btn-start{
