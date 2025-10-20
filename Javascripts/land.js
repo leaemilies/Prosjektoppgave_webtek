@@ -62,7 +62,7 @@ function sjekksvar() {
     const brukerSvar = document.getElementById("svarfelt").value;
     const resultat = document.getElementById("resultat");
 
-    if (brukerSvar === riktigSvar.toLowerCase()) { // riktig svar
+    if (brukerSvar.toLowerCase() === riktigSvar.toLowerCase()) { // riktig svar
         result.textContent = "Riktig svar!";
         result.style.color = "green";
         document.getElementById("sjekk").disabled = true;
