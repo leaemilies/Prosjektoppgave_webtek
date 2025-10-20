@@ -1,3 +1,25 @@
+/* Super Kindly font til forside */
+@font-face{
+  font-family: "Super Kindly";
+  src: url("./fonts/SUPER KINDLY.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility-klasse for at HTML ikke skal måtte redigeres senere */
+.font-title { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
+
+/* Bruk på konkrete elementer */
+.title { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
+
+/* Kategoriknapper */
+.category-grid .btn { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
+
+/* (valgfritt) alle H1/H2 i spillet */
+#spill h1, #spill h2 { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
+
+
 body {
   background-color: #d8b4fe; /* lilac */
   background-size: cover;
