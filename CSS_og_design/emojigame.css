@@ -7,22 +7,27 @@
   font-display: swap;
 }
 
-/* Utility-regler for at HTML ikke skal måtte redigeres senere */
-.font-title { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
+/* Design på titteltekst */
 
-/* Bruk på konkrete elementer */
-.title { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
-
-/* Kategoriknapper */
-.category-grid .btn { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
-
-/* (valgfritt) alle H1/H2 i spillet */
-#spill h1, #spill h2 { font-family: "Super Kindly", system-ui, Arial, sans-serif; }
-
-/* Design på tittel */
 .title{
+  font-family: "Super Kindly", system-ui, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;       /* mer lik PDF */
+  line-height: .9;             /* tettere */
   color:#FFD54F;
+
+  /* tykkere outline */
+  -webkit-text-stroke: 6px #fff;          /* var 3px */
+  text-shadow:                            /* Firefox-fallback */
+    0  6px 0 #fff,  0 -6px 0 #fff,
+    6px 0  0 #fff, -6px  0 0 #fff,
+    4px 4px 0 #fff, -4px 4px 0 #fff,
+    4px -4px 0 #fff, -4px -4px 0 #fff;
+
+  /* litt dybde (valgfritt) */
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.12));
 }
+
 
 body {
   background-color: #d8b4fe; /* lilac */
