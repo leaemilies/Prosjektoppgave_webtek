@@ -68,27 +68,6 @@ h1, h2 { text-align: center; }
   background: transparent; /* ingen hvit base her */
 }
 
-/* Selve skyen – tegnes på et pseudo-element bak innholdet */
-#forside.front-card::before{
-  content:"";
-  position:absolute;
-  inset: 0;                 /* fyll hele boksen */
-  pointer-events: none;     /* la knappen være klikkbar */
-  /* flere overlappende sirkler + en stor midtsirkel */
-  background:
-    radial-gradient(58% 48% at 50% 58%, #fff 99%, transparent 100%),
-    radial-gradient(28% 22% at 18% 35%, #fff 99%, transparent 100%),
-    radial-gradient(30% 23% at 38% 22%, #fff 99%, transparent 100%),
-    radial-gradient(30% 23% at 62% 18%, #fff 99%, transparent 100%),
-    radial-gradient(26% 22% at 82% 38%, #fff 99%, transparent 100%),
-    radial-gradient(26% 22% at 22% 86%, #fff 99%, transparent 100%),
-    radial-gradient(26% 22% at 78% 86%, #fff 99%, transparent 100%);
-  /* ekte sky-skygge langs formen (bruker alpha fra gradientene) */
-  filter: drop-shadow(0 30px 70px rgba(0,0,0,.18));
-}
-
-
-
 .btn-start{
   font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
