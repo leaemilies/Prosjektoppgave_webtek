@@ -122,7 +122,7 @@ function nyttsporsmal() {
 document.getElementById("neste").onclick = nyttsporsmal;
 
 document.getElementById("tilbake").onclick = function() {
-    window.location.href = "spill.html";
+    window.location.href = "../../index.html";
 
 }
 }
