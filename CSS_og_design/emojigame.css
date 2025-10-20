@@ -59,32 +59,31 @@ h1, h2 { text-align: center; }
   padding: 0;                    
 }
 
-/* Blob-kortet på forsiden */
+/* Sky-kortet på forsiden */
 #forside.front-card{
-  position: relative;
-  max-width: 900px;           /* gjør boksen større/mindre her */
-  margin: 0 auto;             /* sentrer */
-  padding: 60px 80px;         /* ta bort hvis du heller vil bruke p-5 */
-  background: #fff !important;
-  border: 0;
-  /* organisk blob-radius (prosent pr hjørne / pr akse) */
-  border-radius: 36% 64% 61% 39% / 53% 39% 61% 47% !important;
-  /* dypere skygge + subtil innvendig glans */
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.15),
-    0 2px 0 rgba(255,255,255,.6) inset;
-  overflow: hidden;
-}
+  --cloud: #fff;
+  --shadow: rgba(0,0,0,.18);
 
-/* Glossy highlight og bunnskygge inni bloben */
-#forside.front-card::before{
-  content:"";
-  position:absolute; inset:-2px;
-  border-radius: inherit;
+  position: relative;
+  max-width: 1000px;          /* bredden på skyen */
+  margin: 0 auto;
+  padding: 70px 80px 90px;    /* ekstra bunn-padding så knappen ikke kræsjer i kanten */
+
+  /* selve “skyen”: flere sirkler + en hvit base (siste linje) */
   background:
-    radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
-    radial-gradient(60% 50% at 90% 110%, rgba(0,0,0,.06), rgba(0,0,0,0) 60%);
-  pointer-events:none;
+    radial-gradient(180px 120px at 18% 18%, var(--cloud) 99%, transparent 100%),
+    radial-gradient(220px 140px at 42% 10%, var(--cloud) 99%, transparent 100%),
+    radial-gradient(200px 130px at 66% 14%, var(--cloud) 99%, transparent 100%),
+    radial-gradient(180px 120px at 82% 28%, var(--cloud) 99%, transparent 100%),
+    radial-gradient(230px 140px at 15% 85%, var(--cloud) 99%, transparent 100%),
+    radial-gradient(240px 150px at 85% 85%, var(--cloud) 99%, transparent 100%),
+    linear-gradient(var(--cloud), var(--cloud)); /* baseflate */
+
+  /* myk skygge under hele skyen */
+  filter: drop-shadow(0 30px 70px var(--shadow));
+  border: 0;
+  border-radius: 40px;        /* avrunder baseflaten litt (usynlig bak sirklene, men gir jevn kant) */
+  overflow: visible;
 }
 
 
