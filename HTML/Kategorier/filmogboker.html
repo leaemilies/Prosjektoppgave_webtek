@@ -6,6 +6,41 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS_og_design/emojigame.css">
 </head>
+
+<body>
+<!-- --- FILM OG BØKER kategori test --- -->
+<div class="game-wrap container-xxl">
+
+  <!-- Topp-linje -->
+  <div class="game-top d-flex justify-content-between align-items-center">
+    <div class="progress-count" id="rundeTeller">1/20</div>
+    <button class="hint-btn" id="hintBtn" title="Hint">💡</button>
+  </div>
+
+  <!-- Kategori-banner -->
+  <div class="category-badge">
+    <span>Kategori:</span> <strong id="kategoriNavn">Filmer og bøker</strong>
+  </div>
+
+  <!-- Store emojis i midten -->
+  <div class="emoji-row" id="oppgaveEmojis">🧙‍♂️ ♂️ ⚡ 🦉 🏰</div>
+
+  <!-- Svarområde -->
+  <div class="answer-area">
+    <div class="revealed" id="revealed">H A</div>
+    <div class="slots" id="slots"></div>
+
+    <div class="answer-controls">
+      <input id="svarfelt" type="text" placeholder="Skriv svaret her">
+      <button id="sjekk">Sjekk svar</button>
+      <p id="result"></p>
+    </div>
+  </div>
+
+</div>
+<script src="Javascripts/filmogboker.js"></script>
+</body>
+
 <body>
     
     <h2 id="sporsmal"></h2>
@@ -16,4 +51,5 @@
 
     <script src="Javascripts/filmogboker.js"></script>
 </body>
+
 </html>
