@@ -1,10 +1,11 @@
-  // Vis confetti when the answer is correct
+  // Vis konfetti når svaret er riktig
 function konfetti() {
   confetti({
-    particleCount: 100,
-    spread: 70,
+    particleCount: 400,
+    spread: 200,
     origin: { y: 0.6 },
   });
+}
 
 window.onload = function() {
 
@@ -162,5 +163,4 @@ document.getElementById("tilbake").onclick = function() {
 }
 score.textContent = poengsum;
     localStorage.setItem("score", poengsum);
-}
 }
