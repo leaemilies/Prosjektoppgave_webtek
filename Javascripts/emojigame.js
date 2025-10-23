@@ -115,3 +115,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+
+
+  // Konfetti-knapp
+const button = document.getElementById("confettiButton");
+
+    button.addEventListener("click", () => {
+      // Avfyr konfetti
+      confetti({
+        particleCount: 200,
+        spread: 90,
+        startVelocity: 40,
+        gravity: 0.8,
+        origin: { y: 0.6 },
+        colors: ["#ffb6c1", "#ffd700", "#87cefa", "#98fb98"],
+      });
+
+      // Gi knappen litt sprett-animasjon
+      button.style.transform = "scale(1.2)";
+      setTimeout(() => (button.style.transform = "scale(1)"), 200);
+    });

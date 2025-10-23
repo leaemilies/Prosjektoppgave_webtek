@@ -1,3 +1,11 @@
+  // Vis confetti when the answer is correct
+function konfetti() {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+
 window.onload = function() {
 
     let poengsum=0;
@@ -67,6 +75,7 @@ function sjekksvar() {
     if (brukerSvar.toLowerCase() === riktigSvar.toLowerCase()) { // riktig svar
         result.textContent = "Riktig svar!";
         result.style.color = "green";
+        konfetti();
         document.getElementById("sjekk").disabled = true;
         
         //poengteller
@@ -153,4 +162,5 @@ document.getElementById("tilbake").onclick = function() {
 }
 score.textContent = poengsum;
     localStorage.setItem("score", poengsum);
+}
 }
