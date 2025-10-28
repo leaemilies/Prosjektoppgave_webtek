@@ -11,7 +11,7 @@
 .title{
   font-family: "Super Kindly", "Cherry Bomb One", system-ui, Arial, sans-serif;
   color:#FFD54F;
-  font-size: clamp(3rem, 8vw, 8rem); /* dynamisk skalering i forhold til skjermbredde */
+  font-size: clamp(3rem, 8vw, 8rem);
   text-transform: uppercase;
   letter-spacing: .08em;
   line-height: .9;
@@ -28,17 +28,11 @@
 
 /* Font på "spill" knappen */
 #spinBtn {
-  font-family: "Super Kindly", "Luckiest Guy", sans-serif; /* eller hvilken du vil */
-  font-size: 1.4rem;       /* juster størrelse */
-  font-weight: 700;        /* fet skrift */
-  letter-spacing: 1px;     /* litt luft mellom bokstaver */
+  font-family: "Super Kindly", "Luckiest Guy", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-body {
-  background-color: #d8b4fe; /* lilac */
-  background-size: cover;
-  background-position: center;
 }
 
 h1, h2 { text-align: center; }
@@ -55,7 +49,6 @@ h1, h2 { text-align: center; }
   overflow: hidden;        
 }
 
-/* Denne fikser border ish */
 .spinner-container canvas{
   position: absolute;
   inset: 0;         
@@ -64,43 +57,6 @@ h1, h2 { text-align: center; }
   display: block;    
 }
 
-
-/* Gammel pil øverst som peker ned mot hjulet, ikke i bruk akkurat nå.
-.arrow {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%) rotate(180deg);
-  width: 0; height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid rgb(23, 14, 101);
-  z-index: 10;
-}
-*/
-
-/* Ny pil, forsøk 2, endres igjen: 
-.arrow-spin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 70px;              
-  color: #FFD54F;              
-  transform-origin: bottom center;  
-  transform: translate(-50%, -100%) rotate(0deg);
-  z-index: 11;
-  pointer-events: none;
-
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-*/
-
-/* Compass-nål i sentrum av hjulet: */
 .arrow-spin {
   position: absolute;
   top: 50%;
@@ -118,7 +74,7 @@ h1, h2 { text-align: center; }
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-/* Start knappen */
+/* Start-knapp */
 .btn-start{
   font-family: "Cherry Bomb One", "Luckiest Guy", sans-serif;
   font-weight: 900;
@@ -130,12 +86,27 @@ h1, h2 { text-align: center; }
   font-size: 2rem;
 }
 
-body {
-  overflow: hidden;
-  position: relative;
+/* --- SENTRERING & BAKGRUNN --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Emoji-bakgrunn */
+body {
+  background-color: #d8b4fe; /* lilac */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh; /* fyll hele skjermen */
+  z-index: 0;
+}
+
+/* Emoji-bakgrunn (urørt, beholdt nøyaktig som du hadde den) */
 body::before {
   content: "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 🥰 😘 😗 😙 😚 🤪 🥳 🤓 😏 🤩 🤗 😜 🤠 😺 😹 😻 😼 😽 😾 😿 🙀 🤔 😮 😴 😇 😬 🤯 😈 👻 💩 💀 🤖 😺 🐶 🐱 🐻 🐼 🦊 🐯 🦁 🐷 🐸 🦄 🐙 🍕 🍔 🍟 🍿 🍩 🍪 🍰 🍦 🍓 🍉 🥝 🍇 🍒 🍍 🌭 🍣 🍜 🍩 🍫 🎮 🎲 🎯 🎵 🎤 🎬 🚀 🎉 ⭐ 🪩 💫 🎃 😀 😃 😄 😁 😆 😂 🤣 😅 🤔 😎 😡 😢 😱 😴 🤤 😇 🥺 🤯 🤪 😍 🍎 🍌 🍓 🍇 🍉 🍍 🥑 🥕 🌽 🥦 🍕 🍔 🍟 🌭 🌮 🍣 🍩 🍫 🍿 ☕ 🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐸 🐔 🐧 🦉 🐢 🐍 🐠 🏔️ 🏕️ 🏖️ 🏜️ 🏝️ 🏞️ 🌋 🗻 🏙️ 🌇 🌆 🌃 🌌 🌠 ⛺ 🛤️ 🛣️ 🗺️ 🏛️ 🕌 ☀️ 🌤️ ⛅ 🌥️ 🌦️ 🌧️ ⛈️ 🌩️ 🌨️ ❄️ 💨 🌪️ 🌫️ 🌈 🌞 🌝 🌛 🌜 🌟 🌙 🎁 🧸 🧱 💡 🔦 🪞 🪑 🛏️ 🚪 🧯 🧹 🧼 🪠 🧻 📦 📚 📎 🔒 🔑 🪙 🎯 🏀 ⚽ 🏈 ⚾ 🎾 🏐 🏓 🏸 🥅 🎳 🎮 🕹️ ♟️ 🎲 🧩 🪀 🛹 🏆 🥇 📱 📲 💻 🖥️ 🖨️ 🖱️ 🧮 🕹️ 📞 📡 🔌 🔋 💾 💿 📷 📹 🎥 📺 🎙️ 🎚️ 🎵 🎶 🎼 🎤 🎧 🎷 🎸 🎺 🪗 🎻 🥁 🎹 🎨 🖌️ 🖍️ 📝 ✏️ 🖋️ ✒️ 📓 🇳🇴 🇸🇪 🇩🇰 🇫🇮 🇮🇸 🇬🇧 🇫🇷 🇩🇪 🇪🇸 🇮🇹 🇵🇹 🇳🇱 🇺🇸 🇨🇦 🇲🇽 🇧🇷 🇦🇷 🇨🇳 🇯🇵 🇰🇷 🙃 😉 😌 😗 😙 😚 😏 😒 😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 🥹 🥲 🫠 🫢 🫣 🥴 😵 😵‍💫 🤐 🫥 🥳 🥶 🥵 🫤 😶 😑 🙄 🫡 🙏 🤲 🫶 🫳 🫴 ✋ 🖐️ 🤚 🖖 🖕 🤟 🤘 🤙 🤏 🤞 ✌️ 👌 🤌 👏 🙌 👐 🤝 👍 👎 👊 ✊ 🤛 🤜 👈 👉 👆 👇 ☝️ 🫵 🚶 🏃 🕺 💃 🧍 🧎 🧑‍🦯 🧑‍🦽 🧑‍🦼 🧑‍🎄 🧑‍🔬 🧑‍✈️ 🧑‍⚖️ 👨‍⚖️ 👩‍⚖️ 🧑‍🚒 👨‍🔧 👩‍🔧 🧑‍🏭 👩‍🎨 👨‍🎨 🧑‍✈️ 👩‍✈️ 👨‍✈️ 🧑‍🚀 👨‍🚀 👩‍🚀 🧑‍⚕️ 👨‍⚕️ 👩‍⚕️ 👨‍🍳 👩‍🍳 🧑‍🍳 👮‍♀️ 👮‍♂️ 🕵️‍♂️ 🕵️‍♀️ 💂‍♂️ 💂‍♀️ 🧑‍🌾 👨‍🌾 👩‍🌾 🧑‍🔧 🧑‍🏫 🧑‍💼 👨‍💼 👩‍💼 🧑‍🎓 👨‍🎓 👩‍🎓 🚗 🚕 🚙 🚌 🚎 🏎️ 🚓 🚑 🚒 🚐 🚚 🚛 🛻 🚜 🛵 🛴 🚲 🛺 🚨 🚔 ⛽ 🧯 🚧 🚦 🚥 🚏 🗺️ 🗿 🗽 🗼 🏰 🏯 🏟️ 🏛️ 🏗️ 🧱 🪨 🪵 🛖 ⛺ 🛶 🛥️ 🚤 ⛴️ 🛳️ 🚢 ✈️ 🛫 🛬 🪂 🚁 🚟 🚠 🚡 🛰️ 🚀 🛸 🌍 🌎 🌏 🌐 🗾 🧭 ⛱️ 🏖️ 🏝️ 🏜️ 🏞️ 🌋 🏔️ ⛰️ 🏕️ 🌄 🌅 🌇 🌆 🌃 🌉 🌁 🌉 🌌 🌠 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌑 🌚 🌝 🌛 🌜";
   position: fixed;
@@ -159,24 +130,28 @@ body::before {
 }
 
 @keyframes scrollEmojis {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
-
 
 /* Kategoriknapper */
 .category-grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:25px; justify-items:center; margin-top:20px; margin-bottom:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:25px;
+  justify-items:center;
+  margin-top:20px;
+  margin-bottom:40px;
 }
 .category-grid .btn{
-  background:#FFD54F; color:#000; border:3px solid #fff; border-radius:40px;
+  background:#FFD54F;
+  color:#000;
+  border:3px solid #fff;
+  border-radius:40px;
   font-family: "Super Kindly", system-ui, Arial, sans-serif;
-  padding:18px 0; width:100%; max-width:250px;
+  padding:18px 0;
+  width:100%;
+  max-width:250px;
   box-shadow:0 6px 15px rgba(0,0,0,.1);
   transition:transform .15s ease, box-shadow .15s ease;
 }
@@ -186,3 +161,70 @@ body::before {
 .category-grid .w-50{ width:100% !important; max-width:240px; }
 #kategoriKnapper{ display:grid !important; grid-template-columns:repeat(3,minmax(180px,1fr)); gap:18px 22px; justify-items:center; }
 
+/* --- Boks der spillet skjer --- */
+.game-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1; /* viktig: ligger over emoji-bakgrunnen */
+}
+
+/* Dette er størrelsen på emojiene */
+#sporsmal {
+  font-size: 3rem;
+  margin: 30px 0;
+}
+
+#hint,
+#lengde,
+#result,
+#runder,
+#poeng {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+#svarfelt {
+  width: 80%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #43a047;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#tilbake {
+  background-color: #f44336;
+}
+
+#tilbake:hover {
+  background-color: #d32f2f;
+}
