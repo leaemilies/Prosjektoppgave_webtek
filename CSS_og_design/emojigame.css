@@ -79,7 +79,7 @@ h1, h2 { text-align: center; }
 }
 */
 
-/* Ny pil: */
+/* Ny pil, forsøk 2, endres igjen: 
 .arrow-spin {
   position: absolute;
   top: 50%;
@@ -98,6 +98,20 @@ h1, h2 { text-align: center; }
      1px  1px 0 #000;
 }
 
+*/
+
+/* Compass-nål i sentrum av hjulet: */
+.arrow-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;             
+  height: 140px;              
+  transform: translate(-50%, -50%) rotate(0deg); 
+  transform-origin: center center;  
+  z-index: 11;
+  pointer-events: none;       
+}
 
 :root{
   --blue: #4a90e2;
