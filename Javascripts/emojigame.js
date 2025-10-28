@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
+  // Legger til at pilen skal spinne //
+  const arrowEl = document.querySelector(".arrow-spin");
 
   // Kategorier + filnavn (inkl. Mixed)
   const categories = ["Mat og drikke","Film og bøker","Musikk","Land","Ordtak","Mixed"];
@@ -47,13 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.rotate(start + arc / 2);
       ctx.textAlign = "right";
       ctx.fillStyle = "#111";
-      ctx.font = "bold 14px Arial";
+      ctx.font = "bold 16px 'Sour Gummy', sans-serif";
       ctx.fillText(categories[i], radius - 10, 6);
       ctx.restore();
     }
   }
   drawWheelBase();
 
+  /* Fjerner rotasjonen av selve hjulet:
   let currentRotation = 0;
   let spinning = false;
 
@@ -96,8 +99,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  if (spinBtn) spinBtn.addEventListener("click", spinToRandom);
+  */
+arrowEl?.addEventListener("transitionend", () => {
+  // Lås inn sluttvinkel for neste runde
+  arrowEl.style.transition = "none";
+  arrowRotation = ((arrowRotation % 360) + 360) % 360;
+  arrowEl.style.transform = `translate(-50%, -100%) rotate(${arrowRotation}deg)`;
+  spinning = false;
 
+  const selected = arrowEl.dataset.target;
+  if (selected && ROUTES[selected]) {
+    window.location.href = ROUTES[selected];
+  }
+});
+
+// Ny spinn-funksjon for pilen: //
+
+let arrowRotation = 0;   
+let spinning = false;    
+
+function spinArrowToRandom() {
+  if (spinning) return;
+  spinning = true;
+
+  const sliceDeg = 360 / n;
+
+  // Velg tilfeldig kategori
+  const targetIndex = Math.floor(Math.random() * n);
+
+  const targetCenterFromRight = targetIndex * sliceDeg + sliceDeg / 2;
+
+  const extraRounds = 3 + Math.floor(Math.random() * 3); // 3–5 runder
+  const finalRotation = extraRounds * 360 + (targetCenterFromRight - 270);
+
+  const duration = 3500 + extraRounds * 200;
+
+  if (!arrowEl) return; // sikkerhet
+  arrowEl.style.transition = `transform ${duration}ms cubic-bezier(0.22,0.61,0.36,1)`;
+  arrowEl.style.transform = `translate(-50%, -100%) rotate(${finalRotation}deg)`;
+
+  arrowEl.dataset.target = categories[targetIndex];
+  arrowRotation = finalRotation;
+}
+
+/* Fjerner forrige trykk spinn
+  if (spinBtn) spinBtn.addEventListener("click", spinToRandom);
+*/
+
+// Legger inn ny: //
+if (spinBtn) spinBtn.addEventListener("click", spinArrowToRandom);
+
+/* Fjerner gammel versjon av hjul trykk:
   if (startBtn && frontScreen && gameScreen) {
     startBtn.addEventListener("click", () => {
       frontScreen.classList.add("d-none");
@@ -107,6 +159,24 @@ document.addEventListener("DOMContentLoaded", () => {
       setCanvasRotation(currentRotation, false);
     });
   }
+*/
+
+// Legger inn ny hjultrykk:
+if (startBtn && frontScreen && gameScreen) {
+  startBtn.addEventListener("click", () => {
+    frontScreen.classList.add("d-none");
+    gameScreen.classList.remove("d-none");
+    drawWheelBase();
+    arrowRotation = 0;
+
+    // Nullstill pilens posisjon (slik at den peker rett opp når du åpner spillet)
+    if (arrowEl) {
+      arrowEl.style.transition = "none";
+      arrowEl.style.transform = `translate(-50%, -100%) rotate(0deg)`;
+    }
+  });
+}
+
 
   if (backBtn && frontScreen && gameScreen) {
     backBtn.addEventListener("click", () => {
@@ -115,9 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-
 
   // Konfetti-knapp
 const button = document.getElementById("confettiButton");
@@ -137,3 +204,4 @@ const button = document.getElementById("confettiButton");
       button.style.transform = "scale(1.2)";
       setTimeout(() => (button.style.transform = "scale(1)"), 200);
     });
+    
