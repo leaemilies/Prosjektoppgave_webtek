@@ -7,9 +7,9 @@
   font-display: swap;
 }
 
-/* Design på tittel */
+/* Design på spillets tittel */
 .title{
-  font-family: "Super Kindly", system-ui, Arial, sans-serif;
+  font-family: "Super Kindly", "Cherry Bomb One", system-ui, Arial, sans-serif;
   color:#FFD54F;
   font-size: clamp(3rem, 8vw, 8rem); /* dynamisk skalering i forhold til skjermbredde */
   text-transform: uppercase;
@@ -18,7 +18,7 @@
   text-align: center;
 }
 
-/* Design på kategori font */
+/* Design på "velg-kategori" */
 #spill h2 {
   font-family: "Super Kindly", sans-serif;
   color: #FFD54F;
@@ -38,10 +38,26 @@ h1, h2 { text-align: center; }
 .card { background: white; border-radius: 20px; }
 
 .spinner-container {
-  position: relative; width: 300px; height: 300px; margin: auto;
+  position: relative; 
+  width: 300px; 
+  height: 300px; 
+  margin: auto;
+  border: 2px solid #000;  
+  border-radius: 100%;
+  overflow: hidden;        
 }
 
-/* Pil øverst som peker ned mot hjulet */
+/* Denne fikser border ish */
+.spinner-container canvas{
+  position: absolute;
+  inset: 0;         
+  width: 100%;
+  height: 100%;
+  display: block;    
+}
+
+
+/* Gammel pil øverst som peker ned mot hjulet, ikke i bruk akkurat nå.
 .arrow {
   position: absolute;
   top: -20px;
@@ -53,6 +69,27 @@ h1, h2 { text-align: center; }
   border-bottom: 30px solid rgb(23, 14, 101);
   z-index: 10;
 }
+*/
+
+/* Ny pil: */
+.arrow-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 70px;              
+  color: #FFD54F;              
+  transform-origin: bottom center;  
+  transform: translate(-50%, -100%) rotate(0deg);
+  z-index: 11;
+  pointer-events: none;
+
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
 
 :root{
   --blue: #4a90e2;
@@ -119,32 +156,4 @@ body::before {
 
 .category-grid .w-50{ width:100% !important; max-width:240px; }
 #kategoriKnapper{ display:grid !important; grid-template-columns:repeat(3,minmax(180px,1fr)); gap:18px 22px; justify-items:center; }
-
-/* Alt under gir design til kategoriene */
-:root{ --yellow:#FFD54F; --text:#111; }
-
-.game-wrap{ max-width:min(1100px,92vw); margin:32px auto 60px; color:var(--text); }
-
-.game-top{ min-height:40px; margin-bottom:clamp(12px,2.5vw,24px); }
-.progress-count{ font-family:"Luckiest Guy", system-ui, sans-serif; font-size:clamp(22px,3vw,28px); color:var(--yellow); }
-.hint-btn{ background:transparent; border:0; font-size:clamp(24px,4vw,34px); line-height:1; cursor:pointer; }
-
-.category-badge{
-  display:inline-block; padding:clamp(10px,1.8vw,14px) clamp(18px,2.8vw,26px);
-  background:var(--yellow); border-radius:22px; font-family:"Luckiest Guy", system-ui, sans-serif;
-  font-size:clamp(22px,3.2vw,36px); margin:0 auto clamp(20px,4vw,36px); text-align:center;
-}
-.category-badge span{ opacity:.85; }
-
-.emoji-row{ text-align:center; font-size:clamp(48px,10vw,140px); line-height:1.1; margin:clamp(10px,3vw,24px) 0 clamp(18px,4vw,34px); }
-
-.answer-area{ display:grid; justify-items:center; gap:clamp(8px,1.6vw,14px); }
-.revealed{ font-size:clamp(34px,5vw,60px); letter-spacing:.15em; }
-
-.slots{ display:flex; gap:clamp(12px,1.8vw,20px); }
-.slot{ width:clamp(28px,4.2vw,56px); border-bottom:6px solid var(--yellow); height:clamp(20px,2.8vw,28px); border-radius:8px; }
-
-.answer-controls{ margin-top:18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-
-/* Alt over ^^ gir design til kategoriene */
 
