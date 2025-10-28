@@ -59,14 +59,14 @@ h1, h2 { text-align: center; }
 
 .arrow-spin {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140px;             
-  height: 140px;              
-  transform: translate(-50%, -50%) rotate(0deg); 
-  transform-origin: center center;  
-  z-index: 11;
-  pointer-events: none;       
+  inset: 0;               /* top, right, bottom, left = 0 */
+  margin: auto;           /* sentrerer pila i containeren */
+  width: 140px;           /* juster størrelse etter behov */
+  display: block;
+  transform: rotate(0deg);           /* startposisjon */
+  transform-origin: 50% 50%;         /* roter rundt midten */
+  z-index: 11;                       /* foran hjulet */
+  pointer-events: none;              /* ikke klikkbar */
 }
 
 :root{
