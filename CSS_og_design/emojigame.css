@@ -35,12 +35,6 @@
   text-transform: uppercase;
 }
 
-body {
-  background-color: #d8b4fe; /* lilac */
-  background-size: cover;
-  background-position: center;
-}
-
 h1, h2 { text-align: center; }
 
 .card { background: white; border-radius: 20px; }
@@ -131,9 +125,16 @@ h1, h2 { text-align: center; }
 }
 
 body {
+  background-color: #d8b4fe; /* lilac */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   position: relative;
 }
+
 
 /* Emoji-bakgrunn */
 body::before {
@@ -198,12 +199,15 @@ body::before {
   padding: 40px;
   width: 400px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
+/* Dette er størrelsen på emojiene */
 #sporsmal {
   font-size: 3rem;
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
 #hint,
