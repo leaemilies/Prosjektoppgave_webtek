@@ -59,15 +59,17 @@ h1, h2 { text-align: center; }
 
 .arrow-spin {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140px;             
-  height: 140px;              
-  transform: translate(-50%, -50%) rotate(0deg); 
-  transform-origin: center center;  
+  inset: 0;           /* top:0; right:0; bottom:0; left:0 */
+  margin: auto;       /* sentrerer elementet i beholderen */
+  width: 140px;       /* juster størrelse */
+  /* height: 140px;   <-- la helst være kommentert ut, se punkt 2 */
+  display: block;     /* fjern evt. inline-baselineavvik */
+  transform: rotate(0deg);
+  transform-origin: 50% 50%;  /* roter rundt midten */
   z-index: 11;
-  pointer-events: none;       
+  pointer-events: none;
 }
+
 
 :root{
   --blue: #4a90e2;
