@@ -59,17 +59,15 @@ h1, h2 { text-align: center; }
 
 .arrow-spin {
   position: absolute;
-  inset: 0;           /* top:0; right:0; bottom:0; left:0 */
-  margin: auto;       /* sentrerer elementet i beholderen */
-  width: 140px;       /* juster størrelse */
-  /* height: 140px;   <-- la helst være kommentert ut, se punkt 2 */
-  display: block;     /* fjern evt. inline-baselineavvik */
-  transform: rotate(0deg);
-  transform-origin: 50% 50%;  /* roter rundt midten */
-  z-index: 11;
-  pointer-events: none;
+  inset: 0;               /* top, right, bottom, left = 0 */
+  margin: auto;           /* sentrerer pila i containeren */
+  width: 140px;           /* juster størrelse etter behov */
+  display: block;
+  transform: rotate(0deg);           /* startposisjon */
+  transform-origin: 50% 50%;         /* roter rundt midten */
+  z-index: 11;                       /* foran hjulet */
+  pointer-events: none;              /* ikke klikkbar */
 }
-
 
 :root{
   --blue: #4a90e2;
