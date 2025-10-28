@@ -100,11 +100,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   */
-arrowEl?.addEventListener("transitionend", () => {
+
+
+/* Kommenterer ut den forrige pil-versjonen som ikke fungerer
+
+  arrowEl?.addEventListener("transitionend", () => {
   // Lås inn sluttvinkel for neste runde
   arrowEl.style.transition = "none";
   arrowRotation = ((arrowRotation % 360) + 360) % 360;
-  arrowEl.style.transform = `translate(-50%, -100%) rotate(${arrowRotation}deg)`;
+  arrowEl.style.transform = `rotate(${finalRotation}deg)`;
   spinning = false;
 
   const selected = arrowEl.dataset.target;
@@ -137,6 +141,46 @@ function spinArrowToRandom() {
   if (!arrowEl) return; // sikkerhet
   arrowEl.style.transition = `transform ${duration}ms cubic-bezier(0.22,0.61,0.36,1)`;
   arrowEl.style.transform = `translate(-50%, -100%) rotate(${finalRotation}deg)`;
+
+  arrowEl.dataset.target = categories[targetIndex];
+  arrowRotation = finalRotation;
+}
+
+*/
+
+/* Legger inn ny versjon av pil-spinn under: */
+// --- PIL: variabler må stå FØR lyttere/funksjoner ---
+let arrowRotation = 0;   // gjeldende vinkel
+let spinning = false;
+
+// Når spinn er ferdig
+arrowEl?.addEventListener("transitionend", () => {
+  arrowEl.style.transition = "none";
+  arrowRotation = ((arrowRotation % 360) + 360) % 360;   // normaliser
+  arrowEl.style.transform = `rotate(${arrowRotation}deg)`; // ingen translate
+  spinning = false;
+
+  const selected = arrowEl.dataset.target;
+  if (selected && ROUTES[selected]) {
+    window.location.href = ROUTES[selected];
+  }
+});
+
+// Spinn-funksjonen
+function spinArrowToRandom() {
+  if (spinning) return;
+  spinning = true;
+
+  const sliceDeg = 360 / n;
+  const targetIndex = Math.floor(Math.random() * n);
+  const targetCenterFromRight = targetIndex * sliceDeg + sliceDeg / 2;
+  const extraRounds = 3 + Math.floor(Math.random() * 3);
+  const finalRotation = extraRounds * 360 + (targetCenterFromRight - 270);
+  const duration = 3500 + extraRounds * 200;
+
+  if (!arrowEl) return;
+  arrowEl.style.transition = `transform ${duration}ms cubic-bezier(0.22,0.61,0.36,1)`;
+  arrowEl.style.transform = `rotate(${finalRotation}deg)`; // ← bare rotate
 
   arrowEl.dataset.target = categories[targetIndex];
   arrowRotation = finalRotation;
