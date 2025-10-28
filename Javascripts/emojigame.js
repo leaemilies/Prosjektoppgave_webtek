@@ -221,7 +221,6 @@ if (startBtn && frontScreen && gameScreen) {
   });
 }
 
-
   if (backBtn && frontScreen && gameScreen) {
     backBtn.addEventListener("click", () => {
       gameScreen.classList.add("d-none");
