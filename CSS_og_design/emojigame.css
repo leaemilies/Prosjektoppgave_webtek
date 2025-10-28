@@ -26,6 +26,16 @@
   font-size: clamp(2rem, 6vw, 5rem);
 }
 
+/* Font på "spill" knappen */
+#spinBtn {
+  font-family: "Super Kindly", "Luckiest Guy", sans-serif; /* eller hvilken du vil */
+  font-size: 1.4rem;       /* juster størrelse */
+  font-weight: 700;        /* fet skrift */
+  letter-spacing: 1px;     /* litt luft mellom bokstaver */
+  text-transform: uppercase;
+}
+
+
 
 body {
   background-color: #d8b4fe; /* lilac */
