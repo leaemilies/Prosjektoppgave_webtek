@@ -58,6 +58,11 @@ h1, h2 { text-align: center; }
   overflow: hidden;
 }
 
+#spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 /* Denne fikser border ish */
 .spinner-container canvas{
@@ -107,14 +112,12 @@ h1, h2 { text-align: center; }
 /* Compass-nål i sentrum av hjulet: */
 .arrow-spin {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140px;             
-  height: 140px;              
-  transform: translate(-50%, -50%) rotate(0deg); 
-  transform-origin: center center;  
+  width: 140px;               /* juster størrelsen om ønskelig */
+  height: 140px;
+  transform-origin: center center;  /* roterer rundt midten */
+  transform: rotate(0deg);
   z-index: 11;
-  pointer-events: none;       
+  pointer-events: none;       /* så den ikke blokkerer klikk */
 }
 
 :root{
