@@ -46,22 +46,13 @@ h1, h2 { text-align: center; }
 .card { background: white; border-radius: 20px; }
 
 .spinner-container {
-  position: relative;
-  width: 300px;
-  height: 300px;
+  position: relative; 
+  width: 300px; 
+  height: 300px; 
   margin: auto;
-  display: flex;               /* gjør det enkelt å sentrere alt inni */
-  align-items: center;         /* vertikal sentrering */
-  justify-content: center;     /* horisontal sentrering */
-  border: 2px solid #000;      /* sort kant rundt hjulet */
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-#spinner {
-  position: absolute;
-  top: 0;
-  left: 0;
+  border: 2px solid #000;  
+  border-radius: 100%;
+  overflow: hidden;        
 }
 
 /* Denne fikser border ish */
@@ -112,12 +103,14 @@ h1, h2 { text-align: center; }
 /* Compass-nål i sentrum av hjulet: */
 .arrow-spin {
   position: absolute;
-  width: 140px;               /* juster størrelsen om ønskelig */
-  height: 140px;
-  transform-origin: center center;  /* roterer rundt midten */
-  transform: rotate(0deg);
+  top: 50%;
+  left: 50%;
+  width: 140px;             
+  height: 140px;              
+  transform: translate(-50%, -50%) rotate(0deg); 
+  transform-origin: center center;  
   z-index: 11;
-  pointer-events: none;       /* så den ikke blokkerer klikk */
+  pointer-events: none;       
 }
 
 :root{
