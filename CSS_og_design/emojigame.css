@@ -35,8 +35,6 @@
   text-transform: uppercase;
 }
 
-
-
 body {
   background-color: #d8b4fe; /* lilac */
   background-size: cover;
@@ -106,9 +104,16 @@ h1, h2 { text-align: center; }
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
+/* Start knappen */
 .btn-start{
-  font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-  border-radius: 999px; padding: 14px 28px; box-shadow: var(--shadow);
+  font-family: "Super Kindly", "Luckiest Guy", sans-serif;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 14px 28px; 
+  box-shadow: var(--shadow);
+  font-size: 2rem;
 }
 
 body {
