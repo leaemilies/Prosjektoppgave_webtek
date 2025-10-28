@@ -126,7 +126,7 @@ function sjekksvar() {
             document.getElementById("sjekk").disabled = true;
         }
     }
-    if (forsok <= 3) {
+    if (forsok <= 4) {
         document.getElementById("hint").textContent = "Hint: Første bokstav er '" + riktigSvar.charAt(0).toUpperCase() + "'";
     }
     
