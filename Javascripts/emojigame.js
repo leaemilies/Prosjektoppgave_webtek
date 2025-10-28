@@ -216,7 +216,7 @@ if (startBtn && frontScreen && gameScreen) {
     // Nullstill pilens posisjon (slik at den peker rett opp når du åpner spillet)
     if (arrowEl) {
       arrowEl.style.transition = "none";
-      arrowEl.style.transform = `translate(-50%, -100%) rotate(0deg)`;
+      arrowEl.style.transform = `rotate(0deg)`;
     }
   });
 }
