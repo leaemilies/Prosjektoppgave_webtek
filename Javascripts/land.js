@@ -1,4 +1,39 @@
-  // Vis konfetti når svaret er riktig
+// Jeg lagrer total poengsum etter 10 runder, plusser på high score og legger en logg med dato+kategori.
+// Alt annet er urørt.
+
+function oppdaterHighScore(total) {
+  // enkel high score i localStorage
+  var best = Number(localStorage.getItem("emoji_best_score") || 0);
+  if (total > best) {
+    localStorage.setItem("emoji_best_score", String(total));
+  }
+}
+
+function leggTilLogg(total, kategori) {
+  // jeg lagrer hver gjennomspilling som {score, at, cat}
+  try {
+    var raw = localStorage.getItem("emoji_score_list");
+    var liste = raw ? JSON.parse(raw) : [];
+    liste.push({
+      score: Number(total) || 0,
+      at: new Date().toISOString(),
+      cat: kategori || "Ukjent"
+    });
+    // begrens størrelsen litt så det ikke blåser opp
+    if (liste.length > 200) {
+      liste = liste.slice(liste.length - 200);
+    }
+    localStorage.setItem("emoji_score_list", JSON.stringify(liste));
+  } catch(e) {
+    localStorage.setItem("emoji_score_list", JSON.stringify([{
+      score: Number(total) || 0,
+      at: new Date().toISOString(),
+      cat: kategori || "Ukjent"
+    }]));
+  }
+}
+
+// Vis konfetti når svaret er riktig (biblioteket lastes i HTML)
 function konfetti() {
   confetti({
     particleCount: 400,
@@ -11,9 +46,8 @@ window.onload = function() {
 
     let poengsum=0;
     let runder=1;
-    
 
-document.getElementById("sjekk").onclick = sjekksvar;
+    document.getElementById("sjekk").onclick = sjekksvar;
 
     let land = [
   "Frankrike", "USA", "Japan", "Tyskland", "Australia",
@@ -61,30 +95,27 @@ document.getElementById("sporsmal").innerHTML = landEmojis[rondomiser];
 
 let forsok = 5;
 let riktigSvar=land[rondomiser].toLowerCase();
-//let riktigSvar=land[5]
 let lengdeElement = document.getElementById("lengde");
     lengdeElement.textContent = "_ ".repeat(riktigSvar.length);
-    //if (lengdeElement.textContent.includes("-")) {
-        lengdeElement.textContent = lengdeElement.textContent.replace(/-/g, "- ");
-    //} skal bytte ut bindestrek med bindestrek og mellomrom
+    lengdeElement.textContent = lengdeElement.textContent.replace(/-/g, "- ");
     
 function sjekksvar() {
 
     const brukerSvar = document.getElementById("svarfelt").value;
-    const resultat = document.getElementById("resultat");
+    const result = document.getElementById("result");
 
-    if (brukerSvar.toLowerCase() === riktigSvar.toLowerCase()) { // riktig svar
+    if (brukerSvar.toLowerCase() === riktigSvar.toLowerCase()) {
         result.textContent = "Riktig svar!";
         result.style.color = "green";
         konfetti();
         document.getElementById("sjekk").disabled = true;
         
-        //poengteller
+        // poengteller
         let poengdennerunden = forsok;
         poengsum += poengdennerunden;
         document.getElementById("poeng").textContent = "Poengsum: " + poengsum;
 
-    } else { // feil svar
+    } else {
         forsok--;
         result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
         result.style.color = "red";
@@ -108,13 +139,11 @@ const nesteKnapp = document.getElementById("neste");
 // Lytt etter Enter-tasten
 input.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        event.preventDefault(); // hindrer evt. form-submit
+        event.preventDefault();
 
-        // Hvis "sjekk" aktiv run
         if (!sjekkKnapp.disabled) {
             sjekkKnapp.click();
         }
-        // Hvis "sjekk" ikke aktiv run
         else if (!nesteKnapp.disabled) {
             nesteKnapp.click();
         }
@@ -124,11 +153,11 @@ input.addEventListener("keydown", function(event) {
 
 function nyttsporsmal() {
     // Velg et nytt tilfeldig land
-    randomiser = Math.floor(Math.random() * land.length);
-    document.getElementById("sporsmal").innerHTML = landEmojis[randomiser];
+    rondomiser = Math.floor(Math.random() * land.length);
+    document.getElementById("sporsmal").innerHTML = landEmojis[rondomiser];
     
     // Oppdater riktig svar og tilbakestill forsøk og inputfelt
-    riktigSvar = land[randomiser].toLowerCase();
+    riktigSvar = land[rondomiser].toLowerCase();
     forsok = 5;
     result.textContent = "";
     document.getElementById("svarfelt").value = "";
@@ -142,12 +171,18 @@ function nyttsporsmal() {
     runder++;
     document.getElementById("runder").textContent = "Du er på runde " + runder;
 
-    //avslutt på 10 runder
+    // avslutt på 10 runder
     if (runder > 10) {
         document.getElementById("neste").disabled = true;
         document.getElementById("sjekk").disabled = true;
         result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
         localStorage.setItem("score", poengsum);
+
+        // NYTT: high score + logg, og lagrer hvilken kategori dette er
+        oppdaterHighScore(poengsum);
+        leggTilLogg(poengsum, "Land");
+        localStorage.setItem("lastCategory", "Kategorier/land.html");
+
         window.location.href = "../../HTML/resultat.html";
     }
 }
@@ -159,8 +194,8 @@ document.getElementById("neste").onclick = nyttsporsmal;
 
 document.getElementById("tilbake").onclick = function() {
     window.location.href = "../../index.html";
-
 }
+
 score.textContent = poengsum;
     localStorage.setItem("score", poengsum);
 }
