@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startEmojiGame({
     items,
     emojis,
-    categoryName: "FilmOgBoker",
-    categoryPath: "Kategorier/filmogboker.html"
+    categoryName: "mix",
+    categoryPath: "Kategorier/mix.html"
   });
 });
