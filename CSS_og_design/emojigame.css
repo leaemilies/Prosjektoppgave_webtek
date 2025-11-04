@@ -181,6 +181,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   z-index: 1; /* viktig: ligger over emoji-bakgrunnen */
+  position: relative;
 }
 
 /* Dette er størrelsen på emojiene */
@@ -228,15 +229,6 @@ button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
-#tilbake {
-  background-color: #f44336;
-}
-
-#tilbake:hover {
-  background-color: #d32f2f;
-}
-
 
 /* Størrelse og farger på ikoner */
 .extra-buttons-left .btn, .extra-buttons-right .btn {
@@ -334,3 +326,37 @@ button:disabled {
 }
 
 
+/* Neste spørsmål knappen */
+#neste {                 
+  background-color: white;   
+  color: #FFD54F;
+  border: 3px solid #FFD54F;           
+  width: 55px;                  
+  height: 55px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#neste:hover {   
+  transform: scale(1.1);        
+}
+
+/* Tilbake til hjemskjerm knapp */
+
+#tilbake:hover {
+  transform: scale(1.1);
+}
+
+#tilbake {  
+  background-color: white;
+  color: #d8b4fe;          
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
