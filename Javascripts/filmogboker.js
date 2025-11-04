@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "Interstellar",
   "Oppdrag Nemo; Finding Nemo",
   "Askepott",
-  "Spider-Man",
+  "Spider Man",
   "Jurassic Park",
   "Frozen",
   "IT",
