@@ -91,6 +91,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     el.spm.innerHTML = emojis[idx];
     riktig = items[idx].toLowerCase();
     forsok = attemptsPerRound;
+    el.losning.textContent = "";
     el.result.textContent = "";
     el.svar.value = "";
     el.sjekk.disabled = false;
