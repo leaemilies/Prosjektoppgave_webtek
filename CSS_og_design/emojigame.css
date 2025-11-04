@@ -235,3 +235,12 @@ button:disabled {
 #tilbake:hover {
   background-color: #d32f2f;
 }
+
+
+/* Størrelse og farger på ikoner */
+.extra-buttons-left .btn, .extra-buttons-right .btn {
+  color: #FFD54F;
+  font-size: 30px;
+}
+
+/* Posisjonering av ikonene på skjerm */
