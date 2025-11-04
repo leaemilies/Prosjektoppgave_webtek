@@ -35,8 +35,8 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     tilbake: document.getElementById("tilbake"),
   };
 
-  if (!el.spm || !el.lengde) {
-    console.error("Mangler element-ID: sporsmal/lengde");
+  if (!el.spm || !el.lengde || !el.sjekk) {
+    console.error("Mangler element-ID: sporsmal/lengde/sjekk");
     return;
   }
 
@@ -99,34 +99,33 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
           break;
         }
       }
-
-      // sjekk om ferdig utfylt
-      const ferdig = !brukerSvar.includes("");
-      if (ferdig){
-        const svar = brukerSvar.join("").toLowerCase();
-        if (svar === riktig){
-          el.result.textContent = "Riktig svar!";
-          el.result.style.color = "green";
-          el.sjekk.disabled = true;
-          poengsum += forsok;
-          el.poeng && (el.poeng.textContent = "Poengsum: " + poengsum);
-          konfetti();
-        } else {
-          forsok--;
-          el.result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
-          el.result.style.color = "red";
-          if (forsok === 0){
-            el.result.textContent = "Du har brukt opp alle forsøkene.";
-            el.sjekk.disabled = true;
-          }
-        }
-      }
-
-      if (forsok <= 3 && el.hint){
-        el.hint.textContent = "Hint: Første bokstav er '" + riktig.charAt(0).toUpperCase() + "'";
-      }
     }
   });
+
+  // ---- Sjekk-knapp ----
+  el.sjekk.onclick = () => {
+    const svar = brukerSvar.join("").toLowerCase();
+    if (svar === riktig){
+      el.result.textContent = "Riktig svar!";
+      el.result.style.color = "green";
+      el.sjekk.disabled = true;
+      poengsum += forsok;
+      el.poeng && (el.poeng.textContent = "Poengsum: " + poengsum);
+      konfetti();
+    } else {
+      forsok--;
+      el.result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
+      el.result.style.color = "red";
+      if (forsok === 0){
+        el.result.textContent = "Du har brukt opp alle forsøkene.";
+        el.sjekk.disabled = true;
+      }
+    }
+
+    if (forsok <= 3 && el.hint){
+      el.hint.textContent = "Hint: Første bokstav er '" + riktig.charAt(0).toUpperCase() + "'";
+    }
+  };
 
   // ---- Nytt spørsmål ----
   function nyttsporsmal(){
