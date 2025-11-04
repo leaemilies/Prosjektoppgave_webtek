@@ -29,14 +29,15 @@
 
 /* Font på "spill" knappen */
 #spinBtn {
+  display: block;
+  margin: 25px auto 0;     /* sentrerer og legger litt luft over */
+  width: 200px;            /* gjør knappen bredere */
+  height: 60px; 
   font-family: "Super Kindly", "Luckiest Guy", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
 }
-
-#s
 
 h1, h2 { text-align: center; }
 
@@ -243,4 +244,71 @@ button:disabled {
   font-size: 30px;
 }
 
-/* Posisjonering av ikonene på skjerm */
+
+/* Nytt design for kategori knapper og velg-spill-siden */
+
+/* 3-kolonne-layout: venstre knapper | hjul | høyre knapper */
+.wheel-layout{
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  align-items: center;         /* vertikalt sentrert mot hjulet */
+  justify-items: center;       /* sentrer innholdet i hver kolonne */
+  column-gap: 28px;
+  row-gap: 0;
+  margin-top: 10px;
+}
+
+/* Midt-kolonnen (hjul + spinn-knapp) */
+.wheel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Kolonner med kategoriknapper */
+.cat-col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Kategori-knappenes utseende */
+.cat-btn{
+  background:#FFD54F;
+  color:#000;
+  border:3px solid #fff;
+  border-radius:40px;
+  font-family: "Super Kindly", system-ui, Arial, sans-serif;
+  font-size: 20px;
+  padding: 14px 22px;
+  width: 100%;
+  max-width: 240px;
+  box-shadow: 0 6px 15px rgba(0,0,0,.1);
+  transition: transform .15s ease, box-shadow .15s ease;
+  text-align: center;
+}
+.cat-btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.15); }
+.cat-btn:active{ transform: translateY(1px);  box-shadow: 0 4px 10px rgba(0,0,0,.1); }
+
+/* Fjern ekstra margin under hjulet (vi har spinn-knappen under) */
+.spinner-container{ margin: 0 auto 10px; }
+
+/* Responsivt: på smale skjermer stables alt pent */
+@media (max-width: 992px){
+  .wheel-layout{
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+  .cat-col{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cat-btn{ max-width: 220px; }
+}
+
+#backBtn {
+  background-color: #FFD54F;
+  color: black;
+}

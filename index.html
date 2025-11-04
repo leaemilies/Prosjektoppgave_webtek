@@ -49,31 +49,38 @@
 		</a>
 	</div>
 
-
   <!-- Spill-skjerm -->
-  <div id="spill" class="d-none card p-5 shadow-lg text-center">
-    <h2 class="mb-3">Velg kategori</h2>
-	<!-- Spinnerhjul -->
-    <div class="spinner-container position-relative mx-auto mb-3">
-      <canvas id="spinner" width="300" height="300"></canvas>
-     <!-- Pilen som spinner -->
-	   <img src="CSS_og_design/Bilder/compassneedle.png" class="arrow-spin" alt="Pil som spinner">
-    </div>
-    <button id="spinBtn" class="btn btn-warning mb-3">Spinn</button>
+<div id="spill" class="d-none card p-5 shadow-lg text-center">
+  <h2 class="mb-3">Velg kategori</h2>
 
-    <!-- Kategoriknapper -->
-    <div id="kategoriKnapper" class="category-grid mb-3">
-      <a href="HTML/Kategorier/matogdrikke.html" class="btn btn-warning w-50">Mat og drikke</a>
-      <a href="HTML/Kategorier/filmogboker.html" class="btn btn-warning w-50">Film og bøker</a>
-      <a href="HTML/Kategorier/musikk.html" class="btn btn-warning w-50">Musikk</a>
-      <a href="HTML/Kategorier/land.html" class="btn btn-warning w-50">Land</a>
-      <a href="HTML/Kategorier/ordtak.html" class="btn btn-warning w-50">Ordtak</a>
-      <a href="HTML/Kategorier/mix.html" class="btn btn-warning w-50">Mixed</a>
+  <div class="wheel-layout">
+    <!-- Venstre kolonne (3 knapper) -->
+    <div class="cat-col left">
+      <a href="HTML/Kategorier/matogdrikke.html" class="btn btn-warning cat-btn">Mat og drikke</a>
+      <a href="HTML/Kategorier/filmogboker.html" class="btn btn-warning cat-btn">Film og bøker</a>
+      <a href="HTML/Kategorier/musikk.html" class="btn btn-warning cat-btn">Musikk</a>
     </div>
-  
 
-    <button id="backBtn" class="btn btn-secondary">Tilbake til startsiden</button>
+    <!-- Midten: hjul + spinn-knapp -->
+    <div class="wheel">
+      <div class="spinner-container position-relative mx-auto mb-3">
+        <canvas id="spinner" width="300" height="300"></canvas>
+        <img src="CSS_og_design/Bilder/compassneedle.png" class="arrow-spin" alt="Pil som spinner">
+      </div>
+      <button id="spinBtn" class="btn btn-warning mb-0">Spinn</button>
+    </div>
+
+    <!-- Høyre kolonne (3 knapper) -->
+    <div class="cat-col right">
+      <a href="HTML/Kategorier/land.html" class="btn btn-warning cat-btn">Land</a>
+      <a href="HTML/Kategorier/ordtak.html" class="btn btn-warning cat-btn">Ordtak</a>
+      <a href="HTML/Kategorier/mix.html" class="btn btn-warning cat-btn">Mixed</a>
+    </div>
   </div>
+
+  <button id="backBtn" class="btn btn-secondary mt-4">Tilbake til startsiden</button>
+</div>
+
 
   <!-- FAQ Modal -->
 <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
