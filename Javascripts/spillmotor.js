@@ -69,6 +69,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
       el.svar.value = "";
       if (forsok === 0){
         el.result.textContent = "Du har brukt opp alle forsøkene.";
+        el.lengde.textContent = riktig
         el.sjekk.disabled = true;
       }
     }
