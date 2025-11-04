@@ -40,6 +40,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     poeng: document.getElementById("poeng"),
     score: document.getElementById("score"),
     tilbake: document.getElementById("tilbake"),
+    losning: document.getElementById("losning")
   };
 
   if (!el.spm || !el.svar || !el.sjekk) {
@@ -76,6 +77,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
       el.svar.value = "";
       if (forsok === 0) {
         el.result.textContent = "Du har brukt opp alle forsøkene.";
+        el.losning.textContent = riktig
         el.sjekk.disabled = true;
       }
     }
