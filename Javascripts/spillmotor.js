@@ -17,7 +17,6 @@ function konfetti(){
 }
 
 // --- MOTOR ---
-// GJØR DEN GLOBAL MED window.
 window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, maxRounds=10, attemptsPerRound=5 }) {
   if (!Array.isArray(items) || !Array.isArray(emojis) || items.length !== emojis.length || items.length===0) {
     console.error("items/emojis mangler eller har ulik lengde");
@@ -28,67 +27,117 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     spm: document.getElementById("sporsmal"),
     hint: document.getElementById("hint"),
     lengde: document.getElementById("lengde"),
-    svar: document.getElementById("svarfelt"),
     sjekk: document.getElementById("sjekk"),
     result: document.getElementById("result"),
     neste: document.getElementById("neste"),
     runder: document.getElementById("runder"),
     poeng: document.getElementById("poeng"),
-    score: document.getElementById("score"),
     tilbake: document.getElementById("tilbake"),
   };
-  if (!el.spm || !el.svar || !el.sjekk) {
-    console.error("Mangler element-ID: sporsmal/svarfelt/sjekk");
+
+  if (!el.spm || !el.lengde) {
+    console.error("Mangler element-ID: sporsmal/lengde");
     return;
   }
 
   let poengsum=0, runde=1, forsok=attemptsPerRound;
   let idx = Math.floor(Math.random()*items.length);
   let riktig = items[idx].toLowerCase();
+  let brukerSvar = [];
 
-  el.spm.innerHTML = emojis[idx];                           // viktig: innerHTML
-  el.lengde && (el.lengde.textContent = "_ ".repeat(riktig.length).replace(/-/g,"- "));
+  el.spm.innerHTML = emojis[idx];
   el.poeng && (el.poeng.textContent = "Poengsum: " + poengsum);
   el.runder && (el.runder.textContent = "Du er på runde " + runde);
-  el.score && (el.score.textContent = poengsum);
   localStorage.setItem("score", poengsum);
 
-  function sjekksvar(){
-    const svar = String(el.svar.value||"").toLowerCase();
-    if (svar === riktig){
-      el.result.textContent = "Riktig svar!";
-      el.result.style.color = "green";
-      el.sjekk.disabled = true;
-      poengsum += forsok;
-      el.poeng && (el.poeng.textContent = "Poengsum: " + poengsum);
-      konfetti();
-    } else {
-      forsok--;
-      el.result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
-      el.result.style.color = "red";
-      el.svar.value = "";
-      if (forsok === 0){
-        el.result.textContent = "Du har brukt opp alle forsøkene.";
-        el.lengde.textContent = riktig
-        el.sjekk.disabled = true;
+  // ---- Viser streker etter ord ----
+  function visOrdSomStreker(ord){
+    el.lengde.innerHTML = "";
+    brukerSvar = [];
+
+    for (let i = 0; i < ord.length; i++){
+      const ch = ord[i];
+      const span = document.createElement("span");
+      if (ch === " "){
+        span.textContent = " ";
+        span.className = "mellomrom";
+        brukerSvar[i] = " ";
+      } else {
+        span.textContent = "_";
+        span.className = "bokstav";
+        brukerSvar[i] = "";
       }
-    }
-    if (forsok <= 3 && el.hint){
-      el.hint.textContent = "Hint: Første bokstav er '" + riktig.charAt(0).toUpperCase() + "'";
+      el.lengde.appendChild(span);
     }
   }
 
+  visOrdSomStreker(riktig);
+
+  // ---- Håndter tastetrykk ----
+  document.addEventListener("keydown", (e) => {
+    if (runde > maxRounds || el.sjekk.disabled) return;
+
+    const spans = el.lengde.querySelectorAll(".bokstav, .mellomrom");
+
+    if (e.key === "Backspace"){
+      for (let i = spans.length - 1; i >= 0; i--){
+        if (spans[i].className === "bokstav" && spans[i].textContent !== "_"){
+          spans[i].textContent = "_";
+          brukerSvar[i] = "";
+          break;
+        }
+      }
+      e.preventDefault();
+      return;
+    }
+
+    if (/^[a-zA-ZæøåÆØÅ]$/.test(e.key)){
+      for (let i = 0; i < spans.length; i++){
+        if (spans[i].className === "bokstav" && spans[i].textContent === "_"){
+          spans[i].textContent = e.key.toUpperCase();
+          brukerSvar[i] = e.key.toLowerCase();
+          break;
+        }
+      }
+
+      // sjekk om ferdig utfylt
+      const ferdig = !brukerSvar.includes("");
+      if (ferdig){
+        const svar = brukerSvar.join("").toLowerCase();
+        if (svar === riktig){
+          el.result.textContent = "Riktig svar!";
+          el.result.style.color = "green";
+          el.sjekk.disabled = true;
+          poengsum += forsok;
+          el.poeng && (el.poeng.textContent = "Poengsum: " + poengsum);
+          konfetti();
+        } else {
+          forsok--;
+          el.result.textContent = "Feil svar, du har " + forsok + " forsøk igjen.";
+          el.result.style.color = "red";
+          if (forsok === 0){
+            el.result.textContent = "Du har brukt opp alle forsøkene.";
+            el.sjekk.disabled = true;
+          }
+        }
+      }
+
+      if (forsok <= 3 && el.hint){
+        el.hint.textContent = "Hint: Første bokstav er '" + riktig.charAt(0).toUpperCase() + "'";
+      }
+    }
+  });
+
+  // ---- Nytt spørsmål ----
   function nyttsporsmal(){
     idx = Math.floor(Math.random()*items.length);
-    el.spm.innerHTML = emojis[idx];
     riktig = items[idx].toLowerCase();
     forsok = attemptsPerRound;
-
     el.result.textContent = "";
-    el.svar.value = "";
     el.sjekk.disabled = false;
     el.hint && (el.hint.textContent = "");
-    el.lengde && (el.lengde.textContent = "_ ".repeat(riktig.length));
+
+    visOrdSomStreker(riktig);
 
     runde++;
     el.runder && (el.runder.textContent = "Du er på runde " + runde);
@@ -103,16 +152,10 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
       categoryPath && localStorage.setItem("lastCategory", categoryPath);
       window.location.href = "../../HTML/resultat.html";
     }
+
+    el.spm.innerHTML = emojis[idx];
   }
 
-  el.sjekk.onclick = sjekksvar;
   el.neste && (el.neste.onclick = nyttsporsmal);
   el.tilbake && (el.tilbake.onclick = ()=> window.location.href = "../../index.html");
-  el.svar.addEventListener("keydown", e=>{
-    if (e.key === "Enter"){
-      e.preventDefault();
-      if (!el.sjekk.disabled) el.sjekk.click();
-      else if (el.neste && !el.neste.disabled) el.neste.click();
-    }
-  });
 };
