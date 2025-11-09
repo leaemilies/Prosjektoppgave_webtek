@@ -209,7 +209,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     e.preventDefault();
     return;
   }
-
+// Ignorer space sånn at det ikke submitter forsøk som i tidligere kode
   if (e.key === "Enter") {
     if (!el.sjekk.disabled) el.sjekk.click();
     else if (el.neste && !el.neste.disabled) el.neste.click();
