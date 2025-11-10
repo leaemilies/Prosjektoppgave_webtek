@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const items = [
   "Harry Potter",
-  "Ringenes Herre; Lord of the Rings",
+  "Ringenes Herre",
   "Twilight",
-  "Hunger Games; The Hunger Games; Dødslekene",
-  "Narnia; The lion, the witch and the wardrobe",
+  "Hunger Games",
+  "Narnia",
   "Fluenes Herre",
   "Anne Franks Dagbok",
   "Percy Jackson",
   "Sherlock Holmes",
   "Titanic",
-  "Løvenes konge; The lion king",
+  "Løvenes konge",
   "Interstellar",
-  "Oppdrag Nemo; Finding Nemo",
+  "Finding Nemo",
   "Askepott",
   "Spider Man",
   "Jurassic Park",
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "Fast & Furious",
   "Kingsman",
   "The Hunger Games: Mockingjay",
-  "Hobbiten; The Hobbit",
+  "The Hobbit",
   "Kung Fu Panda",
   "The Nightmare Before Christmas",
   "The Walking Dead",
@@ -41,15 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
   "Suits",
   "Black Mirror",
   "Batman",
-  "Jokeren; The Joker",
-  "Mikke Mus; Mickey Mouse",
-  "Pus med støvler; Puss in Boots",
+  "The Joker",
+  "Mikke Mus",
+  "Pus med støvler",
   "Captain America",
   "Thor",
-  "Hulken; The Hulk",
+  "The Hulk",
   "Black Widow",
   "Doctor Strange",
-  "Ariel; Den lille havfruen; The Little Mermaid"
+  "The Little Mermaid"
 ];
 
 const emojis = [
