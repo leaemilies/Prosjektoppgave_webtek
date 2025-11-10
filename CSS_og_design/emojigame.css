@@ -25,13 +25,14 @@
   color: #FFD54F;
   text-transform: uppercase;
   font-size: clamp(2rem, 6vw, 5rem);
+  text-shadow: 0px 10px 3px grey;
 }
 
 /* Font på "spill" knappen */
 #spinBtn {
   display: block;
-  margin: 25px auto 0;     /* sentrerer og legger litt luft over */
-  width: 200px;            /* gjør knappen bredere */
+  margin: 25px auto 0;     
+  width: 200px;            
   height: 60px; 
   font-family: "Super Kindly", "Luckiest Guy", sans-serif;
   font-size: 1.4rem;
@@ -301,8 +302,13 @@ button:disabled {
 }
 
 #backBtn {
-  background-color: #FFD54F;
-  color: black;
+  all: unset; /* fjerner all standard knappestil */
+  color: #d8b4fe;
+  font-size: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #lengde {
