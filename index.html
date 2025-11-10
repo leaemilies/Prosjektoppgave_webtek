@@ -18,6 +18,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="CSS_og_design/emojigame.css">
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 
@@ -274,6 +276,36 @@
       </div>
     </div>
   </div>
+
+
+  <!--onhover vis hva knappen gjør-->
+  <script>
+  $(document).ready(function () {
+
+    // Funksjon for å legge til tooltip på en knapp
+    function leggTilTooltip(selector, tekst) {
+      $(selector).attr({
+        "data-bs-toggle": "tooltip",
+        "data-bs-placement": "top",
+        "title": tekst
+      });
+    }
+
+    // Legg til tooltips for de fire knappene nederst:
+    leggTilTooltip('[data-bs-target="#reglerModal"]', "Spillereglene");
+    leggTilTooltip('[data-bs-target="#faqModal"]', "Vanlige spørsmål");
+    leggTilTooltip('[data-bs-target="#utviklerModal"]', "Om utviklerne");
+    leggTilTooltip('[href="HTML/highscores.html"]', "Highscore");
+
+    // Aktiver Bootstrap-tooltips for alle knapper som fikk data-bs-toggle
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (el) {
+      return new bootstrap.Tooltip(el);
+    });
+  });
+</script>
+
+
 
   <!--Linkene til js skal ikke flyttes! Det kan kræsje spillet/siden.-->
   <script src="Javascripts/emojigame.js"></script>
