@@ -277,18 +277,19 @@
     </div>
   </div>
 
-
   <!--onhover vis hva knappen gjør-->
-  <script>
+<script>
   $(document).ready(function () {
-
-    // Funksjon for å legge til tooltip på en knapp
+    // Funksjon for å legge til tooltip uten å overskrive data-bs-toggle="modal"
     function leggTilTooltip(selector, tekst) {
-      $(selector).attr({
-        "data-bs-toggle": "tooltip",
-        "data-bs-placement": "top",
-        "title": tekst
-      });
+      $(selector)
+        .attr({
+          "title": tekst,
+          "data-bs-placement": "top"
+        })
+        .each(function () {
+          new bootstrap.Tooltip(this); // aktiver tooltip for dette elementet
+        });
     }
 
     // Legg til tooltips for de fire knappene nederst:
@@ -296,16 +297,8 @@
     leggTilTooltip('[data-bs-target="#faqModal"]', "Vanlige spørsmål");
     leggTilTooltip('[data-bs-target="#utviklerModal"]', "Om utviklerne");
     leggTilTooltip('[href="HTML/highscores.html"]', "Highscore");
-
-    // Aktiver Bootstrap-tooltips for alle knapper som fikk data-bs-toggle
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (el) {
-      return new bootstrap.Tooltip(el);
-    });
   });
 </script>
-
-
 
   <!--Linkene til js skal ikke flyttes! Det kan kræsje spillet/siden.-->
   <script src="Javascripts/emojigame.js"></script>

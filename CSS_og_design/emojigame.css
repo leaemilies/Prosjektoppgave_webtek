@@ -378,19 +378,3 @@ h2 {
   letter-spacing: .06em;
 }
 
-
-/* Løft hjørneknappene over alt annet (og Bootstrap-modaler/backdrop) */
-.extra-buttons-right,
-.extra-buttons-left {
-  position: fixed;
-  z-index: 3000;     /* høyere enn .card og Bootstrap backdrop (≈1050) */
-  pointer-events: auto;
-}
-
-/* Sørg for at kortene ikke “overkjører” */
-#forside,
-.front-card,
-.card {
-  position: relative;
-  z-index: 1;        /* under hjørneknappene */
-}
