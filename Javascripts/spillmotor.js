@@ -1,10 +1,37 @@
 // --- MOTOR ---
+
+
 // GJØR DEN GLOBAL MED window.
 window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, maxRounds = 10, attemptsPerRound = 5 }) {
   if (!Array.isArray(items) || !Array.isArray(emojis) || items.length !== emojis.length || items.length === 0) {
     console.error("items/emojis mangler eller har ulik lengde");
     return;
   }
+
+  // --- KONFETTI-FUNKSJON ---
+function konfetti() {
+  const duration = 2 * 1000; // 2 sekunder
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 
   const el = {
     spm: document.getElementById("sporsmal"),
