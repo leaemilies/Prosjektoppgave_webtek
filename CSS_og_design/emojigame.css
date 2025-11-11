@@ -378,3 +378,31 @@ h2 {
   letter-spacing: .06em;
 }
 
+/* --- Utviklerinfo med bilde til høyre --- */
+#utviklerModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Hver utvikler-blokk: tekst + bilde side om side */
+.utvikler-blokk {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Tekst i venstre del */
+.utvikler-blokk p {
+  flex: 1;
+  margin: 0;
+}
+
+/* Bildet i høyre del */
+.utvikler-blokk img {
+  width: 100px;         
+  height: auto;
+  border-radius: 10px;  
+  flex-shrink: 0;       
+}
