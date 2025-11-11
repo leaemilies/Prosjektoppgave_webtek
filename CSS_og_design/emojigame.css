@@ -302,7 +302,7 @@ button:disabled {
 }
 
 #backBtn {
-  all: unset; /* fjerner all standard knappestil */
+  all: unset; 
   color: #d8b4fe;
   font-size: 50px;
   cursor: pointer;
