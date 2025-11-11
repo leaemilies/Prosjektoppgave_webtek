@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   "Butterfly Effect",
   "Ice Spice",
   "Snoop Dogg",
-  "Guns N' Roses; Guns and Roses",
+  "Guns N Roses",
   "Rihanna",
   "Linkin Park",
   "Nicki Minaj",
-  "Rolling Stones; The Rolling Stones",
+  "Rolling Stones",
   "Coldplay",
   "Imagine Dragons",
   "Michael Jackson"
