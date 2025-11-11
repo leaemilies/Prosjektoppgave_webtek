@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Beating around the bush",
     "Hit the nail on the head",
     "Kaste bensin på bål",
-    "Ikke putt alle eggene i en kurv",
+    "Ikke putt alle eggene i en kurv", //34
     "Don't judge a book by its cover",
     "Tiden flyr",
     "Kaste stein i glasshus",
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "&#x1F94A;&#x27A1;&#xFE0F;&#x1F333;",
     "&#x1F528;&#x1F4CC;&#x1F469;&#x200D;&#x1F9B2;",
     "&#x1F93E;&#x26FD;&#x1F525;",
-    "&#x1F95A;&#x274C;&#x1F45A;",
+    "&#x1F95A;&#x274C;&#x1F9FA;",//34
     "&#x1F4D5;&#x1F9D1;&#x200D;&#x2696;&#xFE0F;&#x1F4D6;&#x2705;",
     "&#x231B;&#x23F1;&#xFE0F;&#x1FAB6;",
     "&#x1FAA8;&#x1FA9F;&#x1F3E0;",
