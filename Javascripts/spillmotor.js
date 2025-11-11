@@ -1,6 +1,5 @@
 // --- MOTOR ---
 
-
 // GJØR DEN GLOBAL MED window.
 window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, maxRounds = 10, attemptsPerRound = 5 }) {
   if (!Array.isArray(items) || !Array.isArray(emojis) || items.length !== emojis.length || items.length === 0) {
@@ -9,29 +8,29 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
   }
 
   // --- KONFETTI-FUNKSJON ---
-function konfetti() {
-  const duration = 2 * 1000; // 2 sekunder
-  const end = Date.now() + duration;
+  function konfetti() {
+    const duration = 2 * 1000; // 2 sekunder
+    const end = Date.now() + duration;
 
-  (function frame() {
-    confetti({
-      particleCount: 5,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 }
-    });
-    confetti({
-      particleCount: 5,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 }
-    });
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
 
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
-}
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }
 
   const el = {
     spm: document.getElementById("sporsmal"),
@@ -120,6 +119,23 @@ function konfetti() {
   el.score && (el.score.textContent = poengsum);
   localStorage.setItem("score", poengsum);
 
+  // === Felles avslutning: redirect først, guarder eksterne kall ===
+  function avsluttSpill() {
+    el.neste && (el.neste.disabled = true);
+    el.sjekk.disabled = true;
+    el.result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
+
+    localStorage.setItem("score", poengsum);
+    if (categoryPath) localStorage.setItem("lastCategory", categoryPath);
+    document.removeEventListener("keydown", onKeydown);
+
+    // Riktig sti fra HTML/Kategorier/* til HTML/resultat.html
+    setTimeout(() => { window.location.href = "../resultat.html"; }, 0);
+
+    if (typeof oppdaterHighScore === "function") oppdaterHighScore(poengsum);
+    if (typeof leggTilLogg === "function") leggTilLogg(poengsum, categoryName || "Ukjent");
+  }
+
   function sjekksvar() {
     // Ikke la dem sjekke før alle bokstav-plasser er fylt
     if (typed.length < letterPositions.length) {
@@ -156,21 +172,10 @@ function konfetti() {
   function nyttsporsmal() {
     // ===== NYTT: bruk neste indeks fra sufflet rekkefølge =====
     pos++;
-    if (pos >= order.length) {
-      el.neste && (el.neste.disabled = true);
-      el.sjekk.disabled = true;
-      el.result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
-      localStorage.setItem("score", poengsum);
-      oppdaterHighScore(poengsum);
-      leggTilLogg(poengsum, categoryName || "Ukjent");
-      categoryPath && localStorage.setItem("lastCategory", categoryPath);
-      window.location.href = "../../HTML/resultat.html";
-      return;
-    }
-    idx = order[pos];
+    if (pos >= order.length) { avsluttSpill(); return; }
     // ==========================================================
 
-    el.spm.innerHTML = emojis[idx];
+    el.spm.innerHTML = emojis[idx = order[pos]];
     riktig = items[idx].toLowerCase();
     forsok = attemptsPerRound;
     el.losning.textContent = "";
@@ -180,16 +185,8 @@ function konfetti() {
     resetTyping(riktig);
     runde++;
     el.runder && (el.runder.textContent = "Du er på runde " + runde);
-    if (runde > maxRounds) {
-      el.neste && (el.neste.disabled = true);
-      el.sjekk.disabled = true;
-      el.result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
-      localStorage.setItem("score", poengsum);
-      oppdaterHighScore(poengsum);
-      leggTilLogg(poengsum, categoryName || "Ukjent");
-      categoryPath && localStorage.setItem("lastCategory", categoryPath);
-      window.location.href = "../../HTML/resultat.html";
-    }
+
+    if (runde > maxRounds) { avsluttSpill(); }
   }
 
   // ===== NY: tastaturstyring, resten som før =====
@@ -241,41 +238,41 @@ function konfetti() {
       else if (el.neste && !el.neste.disabled) el.neste.click();
     }
     function onKeydown(e) {
-  if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
 
-  // NYTT: blokkér mellomrom fullstendig (ellers "klikker" fokusert knapp)
-  if (e.code === "Space" || e.key === " ") {
-    e.preventDefault();
-    return; // vi skriver ikke inn spaces; visningen har allerede ekte mellomrom
-  }
+      // NYTT: blokkér mellomrom fullstendig (ellers "klikker" fokusert knapp)
+      if (e.code === "Space" || e.key === " ") {
+        e.preventDefault();
+        return; // vi skriver ikke inn spaces; visningen har allerede ekte mellomrom
+      }
 
-  if (e.key === "Backspace") {
-    if (typed.length > 0 && !el.sjekk.disabled) {
-      typed.pop();
+      if (e.key === "Backspace") {
+        if (typed.length > 0 && !el.sjekk.disabled) {
+          typed.pop();
+          el.lengde.textContent = buildMask(riktig);
+        }
+        e.preventDefault();
+        return;
+      }
+      // Ignorer space sånn at det ikke submitter forsøk som i tidligere kode
+      if (e.key === "Enter") {
+        if (!el.sjekk.disabled) el.sjekk.click();
+        else if (el.neste && !el.neste.disabled) el.neste.click();
+        e.preventDefault();
+        return;
+      }
+
+      // bare bokstaver
+      if (!/^[a-zA-ZæøåÆØÅ]$/.test(e.key)) return;
+
+      if (typed.length >= letterPositions.length || el.sjekk.disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      typed.push(e.key.toLowerCase());
       el.lengde.textContent = buildMask(riktig);
+      e.preventDefault();
     }
-    e.preventDefault();
-    return;
-  }
-// Ignorer space sånn at det ikke submitter forsøk som i tidligere kode
-  if (e.key === "Enter") {
-    if (!el.sjekk.disabled) el.sjekk.click();
-    else if (el.neste && !el.neste.disabled) el.neste.click();
-    e.preventDefault();
-    return;
-  }
-
-  // bare bokstaver
-  if (!/^[a-zA-ZæøåÆØÅ]$/.test(e.key)) return;
-
-  if (typed.length >= letterPositions.length || el.sjekk.disabled) {
-    e.preventDefault();
-    return;
-  }
-
-  typed.push(e.key.toLowerCase());
-  el.lengde.textContent = buildMask(riktig);
-  e.preventDefault();
-}
   });
 };

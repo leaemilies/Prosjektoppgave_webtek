@@ -24,7 +24,7 @@
   // hjem-knappen (pass på at href i HTML peker til ../index.html)
   var goHome = document.getElementById("goHome");
   if (goHome) {
-    goHome.setAttribute("href", "../index.html");
+    goHome.setAttribute("href", "../../index.html");
   }
 
   // enkel pynt rundt scoren (valgfritt, siden du hadde partikler før)
