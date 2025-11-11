@@ -72,7 +72,13 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
   let poengsum = 0,
       runde = 1,
       forsok = attemptsPerRound;
-  let idx = Math.floor(Math.random() * items.length);
+
+  // ===== NYTT: forhåndssuffle indeksene for å unngå duplikater =====
+  const order = Array.from(items.keys()).sort(() => Math.random() - 0.5);
+  let pos = 0;
+  let idx = order[pos];
+  // ================================================================
+
   let riktig = items[idx].toLowerCase();
 
   el.spm.innerHTML = emojis[idx]; // viktig: innerHTML
@@ -121,7 +127,22 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
   }
 
   function nyttsporsmal() {
-    idx = Math.floor(Math.random() * items.length);
+    // ===== NYTT: bruk neste indeks fra sufflet rekkefølge =====
+    pos++;
+    if (pos >= order.length) {
+      el.neste && (el.neste.disabled = true);
+      el.sjekk.disabled = true;
+      el.result.textContent = "Spillet er over! Din endelige poengsum er: " + poengsum;
+      localStorage.setItem("score", poengsum);
+      oppdaterHighScore(poengsum);
+      leggTilLogg(poengsum, categoryName || "Ukjent");
+      categoryPath && localStorage.setItem("lastCategory", categoryPath);
+      window.location.href = "../../HTML/resultat.html";
+      return;
+    }
+    idx = order[pos];
+    // ==========================================================
+
     el.spm.innerHTML = emojis[idx];
     riktig = items[idx].toLowerCase();
     forsok = attemptsPerRound;
