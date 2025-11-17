@@ -129,6 +129,9 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     if (categoryPath) localStorage.setItem("lastCategory", categoryPath);
     document.removeEventListener("keydown", onKeydown);
 
+    HighscoreStore.setBestIfHigher(poengsum);
+    HighscoreStore.addEntry(poengsum, categoryName || "Ukjent");
+
     // Riktig sti fra HTML/Kategorier/* til HTML/resultat.html
     setTimeout(() => { window.location.href = "../resultat.html"; }, 0);
 
