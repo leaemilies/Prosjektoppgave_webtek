@@ -7,7 +7,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     return;
   }
 
-  // --- KONFETTI-FUNKSJON ---
+  // KONFETTI-FUNKSJON 
   function konfetti() {
     const duration = 2 * 1000; // 2 sekunder
     const end = Date.now() + duration;
@@ -52,7 +52,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     return;
   }
 
-  // ===== NYTT: enkel bokstavmotor m/streker pr. ord =====
+  //NYTT: enkel bokstavmotor m/streker pr. ord 
   const isLetter = (ch) => /[a-zæøå]/i.test(ch);
 
   let typed = [];          // kun bokstav-tegn som brukeren skriver
@@ -93,17 +93,17 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     el.lengde && (el.lengde.textContent = buildMask(riktig));
   }
 
-  // ===== SLUTT ny bokstavmotor =====
+  // SLUTT ny bokstavmotor 
 
   let poengsum = 0,
       runde = 1,
       forsok = attemptsPerRound;
 
-  // ===== NYTT: forhåndssuffle indeksene for å unngå duplikater =====
+  // forhåndssuffle indeksene for å unngå duplikater 
   const order = Array.from(items.keys()).sort(() => Math.random() - 0.5);
   let pos = 0;
   let idx = order[pos];
-  // ================================================================
+  
 
   let riktig = items[idx].toLowerCase();
 
@@ -119,7 +119,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
   el.score && (el.score.textContent = poengsum);
   localStorage.setItem("score", poengsum);
 
-  // === Felles avslutning: redirect først, guarder eksterne kall ===
+  // Felles avslutning: redirect først, guarder eksterne kall 
   function avsluttSpill() {
     el.neste && (el.neste.disabled = true);
     el.sjekk.disabled = true;
@@ -173,11 +173,10 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
   }
 
   function nyttsporsmal() {
-    // ===== NYTT: bruk neste indeks fra sufflet rekkefølge =====
+    //  bruk neste indeks fra sufflet rekkefølge 
     pos++;
     if (pos >= order.length) { avsluttSpill(); return; }
-    // ==========================================================
-
+    
     el.spm.innerHTML = emojis[idx = order[pos]];
     riktig = items[idx].toLowerCase();
     forsok = attemptsPerRound;
@@ -192,7 +191,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     if (runde > maxRounds) { avsluttSpill(); }
   }
 
-  // ===== NY: tastaturstyring, resten som før =====
+  // tastaturstyring, resten som før 
   function onKeydown(e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
 
@@ -227,7 +226,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     e.preventDefault();
   }
   document.addEventListener("keydown", onKeydown);
-  // ===== SLUTT tastatur =====
+  // SLUTT tastatur 
 
   el.sjekk.onclick = sjekksvar;
   el.neste && (el.neste.onclick = nyttsporsmal);
@@ -243,7 +242,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     function onKeydown(e) {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
-      // NYTT: blokkér mellomrom fullstendig (ellers "klikker" fokusert knapp)
+      // blokkér mellomrom fullstendig (ellers "klikker" fokusert knapp)
       if (e.code === "Space" || e.key === " ") {
         e.preventDefault();
         return; // vi skriver ikke inn spaces; visningen har allerede ekte mellomrom
