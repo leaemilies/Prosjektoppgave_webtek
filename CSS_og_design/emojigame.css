@@ -64,14 +64,14 @@ h1, h2 { text-align: center; }
 
 .arrow-spin {
   position: absolute;
-  inset: 0;               /* top, right, bottom, left = 0 */
-  margin: auto;           /* sentrerer pila i containeren */
-  width: 140px;           /* juster størrelse etter behov */
+  inset: 0;               
+  margin: auto;           
+  width: 140px;           
   display: block;
-  transform: rotate(0deg);           /* startposisjon */
-  transform-origin: 50% 50%;         /* roter rundt midten */
-  z-index: 11;                       /* foran hjulet */
-  pointer-events: none;              /* ikke klikkbar */
+  transform: rotate(0deg);           
+  transform-origin: 50% 50%;         
+  z-index: 11;                      
+  pointer-events: none;             
 }
 
 :root{
@@ -103,7 +103,7 @@ html, body {
 }
 
 body {
-  background-color: #d8b4fe; /* lilac */
+  background-color: #d8b4fe; 
   background-size: cover;
   background-position: center;
   display: flex;
@@ -238,9 +238,8 @@ button:disabled {
 }
 
 
-/* Nytt design for kategori knapper og velg-spill-siden */
+/* Design for kategori knapper og velg-spill-siden */
 
-/* 3-kolonne-layout: venstre knapper | hjul | høyre knapper */
 .wheel-layout{
   display: grid;
   grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
@@ -284,10 +283,10 @@ button:disabled {
 .cat-btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.15); }
 .cat-btn:active{ transform: translateY(1px);  box-shadow: 0 4px 10px rgba(0,0,0,.1); }
 
-/* Fjern ekstra margin under hjulet (vi har spinn-knappen under) */
+/* Fjern ekstra margin under hjulet */
 .spinner-container{ margin: 0 auto 10px; }
 
-/* Responsivt: på smale skjermer stables alt pent */
+/* Responsivt på smale skjermer */
 @media (max-width: 992px){
   .wheel-layout{
     grid-template-columns: 1fr;
@@ -302,7 +301,7 @@ button:disabled {
 }
 
 #backBtn {
-  all: unset; /* fjerner all standard knappestil */
+  all: unset; 
   color: #d8b4fe;
   font-size: 50px;
   cursor: pointer;
