@@ -52,7 +52,7 @@ window.startEmojiGame = function ({ items, emojis, categoryName, categoryPath, m
     return;
   }
 
-  //NYTT: enkel bokstavmotor m/streker pr. ord 
+  //enkel bokstavmotor m/streker pr. ord 
   const isLetter = (ch) => /[a-zæøå]/i.test(ch);
 
   let typed = [];          // kun bokstav-tegn som brukeren skriver
